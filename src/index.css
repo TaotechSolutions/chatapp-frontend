@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
+
+@import "tailwindcss";
+
+
+/* Custom Global Reset and Styling */
+html,
+body {
+  /* @apply bg-gray-50 text-gray-800 font-sans antialiased; */
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Box-sizing reset for consistent layout behavior */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Links */
+a {
+  @apply text-blue-500 hover:text-blue-700 underline;
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+a:focus {
+  @apply outline-none ring-2 ring-blue-300;
+}
+
+/* Headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply font-bold text-gray-900 leading-tight;
+  margin: 0;
+}
+
+/* Paragraphs */
+p {
+  /* @apply text-gray-700 leading-relaxed; */
+  margin-bottom: 1rem;
+}
+
+/* Lists */
+ul {
+  @apply list-disc pl-5 text-gray-700;
+}
+
+ol {
+  @apply list-decimal pl-5 text-gray-700;
+}
+
+li {
+  margin-bottom: 0.5rem;
+}
+
+/* Buttons */
+button {
+  @apply bg-blue-500 text-white font-medium py-2 px-4 rounded shadow-md;
+  transition: all 0.2s ease-in-out;
+}
+
+button:hover {
+  @apply bg-blue-600;
+}
+
+button:focus {
+  @apply outline-none ring-2 ring-blue-300;
+}
+
+button:disabled {
+  @apply bg-gray-300 text-gray-600 cursor-not-allowed;
+}
+
+/* Inputs and Forms */
+input,
+textarea,
+select {
+  @apply border border-gray-300 rounded-md px-3 py-2 shadow-sm w-full focus:outline-none focus:ring-2 focus:ring-blue-300 focus:border-blue-500;
+}
+
+input::placeholder,
+textarea::placeholder {
+  @apply text-gray-400;
+}
+
+label {
+  @apply block text-gray-700 font-medium mb-1;
+}
+
+/* Tables */
+table {
+  @apply table-auto border-collapse w-full text-left text-sm;
+}
+
+th,
+td {
+  @apply border border-gray-200 px-4 py-2;
+}
+
+th {
+  @apply bg-gray-100 font-semibold;
+}
+
+/* Images */
+img {
+  @apply max-w-full h-auto;
+  display: block;
+}
+
+/* Utility Overrides */
+.container {
+  @apply mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.hidden {
+  display: none !important;
+}
