@@ -13,3 +13,9 @@ npm install
 # or
 yarn install
 ```
+### 3. Run on local
+```bash
+npm run dev
+# or
+yarn run dev
+```
