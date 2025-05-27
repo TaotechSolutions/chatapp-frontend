@@ -43,7 +43,7 @@ const AuthRegister = () => {
         <h2 className='text-white text-3xl font-light ml-6'>Doot</h2>
       </div>
 
-      <div className='bg-white rounded-xl col-span-3 my-6 mx-8 h-screen'>
+      <div className='bg-white rounded-xl col-span-3 my-6 mx-8 min-h-screen py-8'>
         <div className='w-[90%] lg:w-[50%] mx-auto pt-14'>
           {login ? (
             <>
@@ -173,7 +173,7 @@ const AuthRegister = () => {
             </a>
           </div>
 
-          <div className='text-center mt-8 text-gray-600'>
+          <div className='text-center mt-16 text-gray-600 '>
             {login ? (
               <p>
                 Don't have an account?{' '}
