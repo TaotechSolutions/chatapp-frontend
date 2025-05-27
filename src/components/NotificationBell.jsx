@@ -14,7 +14,19 @@ export default function NotificationBell() {
           <FaRegTimesCircle className="text-zinc-400" />
         </button>
       </div>
-      <div>Messages</div>
+      {/* <div className="">You have successfully Logged in into your account</div> */}
+      <p className="text-[16px]-gray-800 font-[400] py-[10px]">
+        You have successfully logged in to your account.
+      </p>
+      <p className="text-[16px]-gray-800 font-[400] py-[10px]">
+        You have successfully logged out of your account.
+      </p>
+
+
+      {/* <div className="bg-green-100 text-green-800 px-4 py-3 rounded-lg shadow-md border border-green-300">
+  You have successfully logged in to your account.
+</div> */}
+
     </div>
   );
 }
