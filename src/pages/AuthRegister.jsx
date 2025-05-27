@@ -66,7 +66,7 @@ const AuthRegister = () => {
           )}
           <form className='flex flex-col gap-4 mt-6 px-8 pb-8'>
             {!login && (
-              <div className='flex flex-col gap-2 mb-4'>
+              <div className='flex flex-col gap-2 mb-2'>
                 <label htmlFor='email' className='text-gray-700 font-medium'>
                   Email
                 </label>
@@ -81,7 +81,7 @@ const AuthRegister = () => {
                 />
               </div>
             )}
-            <div className='flex flex-col gap-2 mb-4'>
+            <div className='flex flex-col gap-2 mb-2'>
               <label htmlFor='username' className='text-gray-700 font-medium'>
                 Username
               </label>
@@ -95,7 +95,7 @@ const AuthRegister = () => {
                 placeholder='Enter Username'
               />
             </div>
-            <div className='flex flex-col gap-2 mb-4'>
+            <div className='flex flex-col gap-2 mb-2'>
               <div className='flex items-center justify-between'>
                 <label htmlFor='password' className='text-gray-700 font-medium'>
                   Password
