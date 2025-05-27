@@ -44,7 +44,7 @@ const AuthRegister = () => {
       </div>
 
       <div className='bg-white rounded-xl col-span-3 my-6 mx-8 min-h-screen py-8'>
-        <div className='w-[90%] lg:w-[50%] mx-auto pt-14'>
+        <div className='w-[90%] lg:w-[40%] mx-auto pt-14'>
           {login ? (
             <>
               <h1 className='text-center text-[calc(1.28906rem_+_.46875vw)] text-gray-800 pb-1'>
