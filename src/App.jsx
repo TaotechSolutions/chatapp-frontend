@@ -1,10 +1,13 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import AuthRegister from './pages/AuthRegister';
+
 function App() {
   return (
-    <>
-      <h1 className="flex items-center justify-center min-h-screen bg-darkPrimary text-center font-bold text-darkText text-4xl font-poppins">
-        Welcome to Taotech Solutions 
-      </h1>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<AuthRegister />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
