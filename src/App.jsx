@@ -1,6 +1,7 @@
 import ProfileBackground from "./component/ProfileBackground";
 import ProfileInfo from "./component/ProfileInfo";
 import Media from "./component/Media";
+import AttachedFiles from "./component/AttachedFiles";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <ProfileInfo />
         </div>
         <Media />
+        <AttachedFiles />
       </div>
     </>
   );
