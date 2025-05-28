@@ -4,9 +4,9 @@
 
 
 /* Custom Global Reset and Styling */
-html,
+/* html,
 body {
-  /* @apply bg-gray-50 text-gray-800 font-sans antialiased; */
+  /* @apply bg-gray-50 text-gray-800 font-sans antialiased; 
   margin: 0;
   padding: 0;
   height: 100%;
@@ -18,14 +18,14 @@ body {
   min-height: 100vh;
 }
 
-/* Box-sizing reset for consistent layout behavior */
+/* Box-sizing reset for consistent layout behavior 
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
-/* Links */
+/* Links 
 a {
   @apply text-blue-500 hover:text-blue-700 underline;
   text-decoration: none;
@@ -36,7 +36,7 @@ a:focus {
   @apply outline-none ring-2 ring-blue-300;
 }
 
-/* Headings */
+/* Headings 
 h1,
 h2,
 h3,
@@ -47,13 +47,13 @@ h6 {
   margin: 0;
 }
 
-/* Paragraphs */
+/* Paragraphs 
 p {
-  /* @apply text-gray-700 leading-relaxed; */
+  /* @apply text-gray-700 leading-relaxed; 
   margin-bottom: 1rem;
 }
 
-/* Lists */
+/* Lists 
 ul {
   @apply list-disc pl-5 text-gray-700;
 }
@@ -66,7 +66,7 @@ li {
   margin-bottom: 0.5rem;
 }
 
-/* Buttons */
+/* Buttons 
 button {
   @apply bg-blue-500 text-white font-medium py-2 px-4 rounded shadow-md;
   transition: all 0.2s ease-in-out;
@@ -84,7 +84,7 @@ button:disabled {
   @apply bg-gray-300 text-gray-600 cursor-not-allowed;
 }
 
-/* Inputs and Forms */
+/* Inputs and Forms 
 input,
 textarea,
 select {
@@ -100,7 +100,7 @@ label {
   @apply block text-gray-700 font-medium mb-1;
 }
 
-/* Tables */
+/* Tables 
 table {
   @apply table-auto border-collapse w-full text-left text-sm;
 }
@@ -112,7 +112,7 @@ td {
 
 th {
   @apply bg-gray-100 font-semibold;
-}
+} */
 
 /* Images */
 /* img {

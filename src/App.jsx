@@ -1,5 +1,6 @@
 import ProfileBackground from "./component/ProfileBackground";
 import ProfileInfo from "./component/ProfileInfo";
+import Media from "./component/Media";
 
 function App() {
   return (
@@ -8,8 +9,11 @@ function App() {
         Welcome to Taotech Solutions 
       </h1> */}
       <div>
-        <ProfileBackground />
-        <ProfileInfo />
+        <div>
+          <ProfileBackground />
+          <ProfileInfo />
+        </div>
+        <Media />
       </div>
     </>
   );

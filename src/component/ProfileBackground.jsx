@@ -14,8 +14,8 @@ function ProfileBackground() {
           <p>My Profile</p>
           <SlOptionsVertical />
         </div>
-        <ProfileDetails />
       </div>
+      <ProfileDetails />
     </div>
   );
 }
