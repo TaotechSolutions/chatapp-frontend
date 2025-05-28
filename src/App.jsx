@@ -1,4 +1,4 @@
-import Profile from "./component/Profile";
+import ProfileBackground from "./component/ProfileBackground";
 import ProfileInfo from "./component/ProfileInfo";
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
         Welcome to Taotech Solutions 
       </h1> */}
       <div>
-        <Profile />
+        <ProfileBackground />
         <ProfileInfo />
       </div>
     </>

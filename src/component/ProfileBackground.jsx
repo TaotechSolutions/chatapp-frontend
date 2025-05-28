@@ -1,7 +1,7 @@
 import { SlOptionsVertical } from "react-icons/sl";
-import ProfileImage from "./ProfileImage";
+import ProfileDetails from "./ProfileDetails";
 
-function Top() {
+function ProfileBackground() {
   return (
     <div>
       <div className="h-[12rem] relative">
@@ -14,10 +14,10 @@ function Top() {
           <p>My Profile</p>
           <SlOptionsVertical />
         </div>
-        <ProfileImage />
+        <ProfileDetails />
       </div>
     </div>
   );
 }
 
-export default Top;
+export default ProfileBackground;
