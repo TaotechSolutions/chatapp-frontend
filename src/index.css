@@ -47,12 +47,6 @@ h6 {
   margin: 0;
 }
 
-/* Paragraphs */
-p {
-  /* @apply text-gray-700 leading-relaxed; */
-  margin-bottom: 1rem;
-}
-
 /* Lists */
 ul {
   @apply list-disc pl-5 text-gray-700;

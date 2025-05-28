@@ -1,10 +1,20 @@
+import { use, useState } from "react";
+import Message from "./components/Message";
+
 function App() {
+  // const [user, setUser] = useState("");
+
   return (
-    <>
-      <h1 className="flex items-center justify-center min-h-screen bg-darkPrimary text-center font-bold text-darkText text-4xl font-poppins">
-        Welcome to Taotech Solutions 
-      </h1>
-    </>
+    <div className="flex flex-col gap-5">
+      <Message />
+      <Message />
+      <Message />
+      <Message type="user"/>
+      <Message />
+      <Message />
+      <Message />
+      <Message type="user"/>
+    </div>
   );
 }
 
