@@ -115,16 +115,16 @@ th {
 }
 
 /* Images */
-img {
+/* img {
   @apply max-w-full h-auto;
   display: block;
-}
+} */
 
 /* Utility Overrides */
-.container {
+/* .container {
   @apply mx-auto px-4 sm:px-6 lg:px-8;
 }
 
 .hidden {
   display: none !important;
-}
+} */
