@@ -2,6 +2,15 @@
 
 @import "tailwindcss";
 
+:root{
+  --bg-color:#ffffff;
+  --text-color:#000000;
+  
+}
+.dark{
+   --bg-color:#000000;
+  --text-color:#ffffff;
+}
 
 /* Custom Global Reset and Styling */
 html,
@@ -16,6 +25,8 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  background-color: var(--bg-color);
+  color: var(--text-color);
 }
 
 /* Box-sizing reset for consistent layout behavior */
