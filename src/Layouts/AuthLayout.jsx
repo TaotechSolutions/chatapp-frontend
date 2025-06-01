@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { BiSolidMessageAltDetail } from "react-icons/bi";
 import { BsTwitterX } from "react-icons/bs";
-import { FaFacebook, FaMessage, FaEye, FaEyeSlash } from "react-icons/fa6";
+import { FaFacebook, FaMessage, } from "react-icons/fa6";
 import { GrGoogle } from "react-icons/gr";
 import authImage from "../assets/auth-img.png";
 import { Outlet } from "react-router-dom";
@@ -36,10 +36,6 @@ function AuthLayout() {
 
   const toggleMode = () => {
     setLogin(!login);
-  };
-
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
   };
 
   return (

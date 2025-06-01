@@ -7,7 +7,6 @@ import authImage from "../assets/auth-img.png";
 
 const AuthRegister = () => {
   const [login, setLogin] = useState(true);
-  const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
     username: "",
@@ -37,9 +36,7 @@ const AuthRegister = () => {
     setLogin(!login);
   };
 
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
-  };
+
 
   return (
     <section className="grid grid-cols-1 md:grid-cols-4 relative">

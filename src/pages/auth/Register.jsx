@@ -1,25 +1,43 @@
 import React from "react";
+import { FaEye, FaEyeSlash } from "react-icons/fa6";
 
 export default function Register() {
+  const [showPassword, setShowPassword] = useState(false);
+  const [formData, setFormData] = useState({
+    email: "",
+    username: "",
+    password: "",
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword((show) => !show);
+  };
+
   return (
     <div>
       <form className="flex flex-col gap-4 mt-6 px-8 pb-8">
-        {!login && (
-          <div className="flex flex-col gap-2 mb-2">
-            <label htmlFor="email" className="text-gray-700 font-medium">
-              Email
-            </label>
-            <input
-              type="text"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleInputChange}
-              className="border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-400"
-              placeholder="Enter Email"
-            />
-          </div>
-        )}
+        <div className="flex flex-col gap-2 mb-2">
+          <label htmlFor="email" className="text-gray-700 font-medium">
+            Email
+          </label>
+          <input
+            type="text"
+            id="email"
+            name="email"
+            value={formData.email}
+            onChange={handleInputChange}
+            className="border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-400"
+            placeholder="Enter Email"
+          />
+        </div>
         <div className="flex flex-col gap-2 mb-2">
           <label htmlFor="username" className="text-gray-700 font-medium">
             Username
@@ -63,26 +81,9 @@ export default function Register() {
           </div>
         </div>
         <div className="flex items-center gap-2">
-          {login ? (
-            <input
-              type="checkbox"
-              id="remember"
-              name="remember"
-              className="accent-green-800 text-white basis-[15px]"
-            />
-          ) : null}
-          {login ? (
-            <label
-              htmlFor="remember"
-              className="text-gray-600 text-sm basis-2/3 font-light"
-            >
-              Remember me
-            </label>
-          ) : (
-            <p className="text-gray-600">
-              By registering you agree to the Doot Terms of Use
-            </p>
-          )}
+          <p className="text-gray-600">
+            By registering you agree to the Doot Terms of Use
+          </p>
         </div>
         <button
           type="submit"
@@ -93,7 +94,7 @@ export default function Register() {
               : "bg-gray-400 cursor-not-allowed"
           }`}
         >
-          {login ? "Login" : "Register"}
+          Register
         </button>
       </form>
     </div>
