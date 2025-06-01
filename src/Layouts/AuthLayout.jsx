@@ -1,43 +1,13 @@
 import React, { useState } from "react";
 import { BiSolidMessageAltDetail } from "react-icons/bi";
 import { BsTwitterX } from "react-icons/bs";
-import { FaFacebook, FaMessage, } from "react-icons/fa6";
+import { FaFacebook, FaMessage } from "react-icons/fa6";
 import { GrGoogle } from "react-icons/gr";
 import authImage from "../assets/auth-img.png";
 import { Outlet } from "react-router-dom";
 
 function AuthLayout() {
-  const [login, setLogin] = useState(true);
-  const [showPassword, setShowPassword] = useState(false);
-  const [formData, setFormData] = useState({
-    email: "",
-    username: "",
-    password: "",
-  });
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
-  const isFormValid = () => {
-    if (login) {
-      return formData.username.trim() !== "" && formData.password.trim() !== "";
-    }
-    return (
-      formData.email.trim() !== "" &&
-      formData.username.trim() !== "" &&
-      formData.password.trim() !== ""
-    );
-  };
-
-  const toggleMode = () => {
-    setLogin(!login);
-  };
-
+  const [login, setLogin] = useState(false);
   return (
     <section className="grid grid-cols-1 md:grid-cols-4 relative">
       <div className="flex items-center justify-center md:justify-start h-16 gap-4 px-8 mt-12">
@@ -66,7 +36,9 @@ function AuthLayout() {
               </p>
             </>
           )}
-          <Outlet />
+          <div>
+            <Outlet />
+          </div>
           <div className="flex items-center justify-center gap-4 px-4 md:px-8 my-6">
             <hr className="w-20 md:w-28 border-gray-300" />
             <span className="text-gray-500 text-sm whitespace-nowrap">
@@ -102,7 +74,7 @@ function AuthLayout() {
                 Don't have an account?{" "}
                 <a
                   href="#"
-                  onClick={toggleMode}
+                  // onClick={toggleMode}
                   className="text-green-500 hover:underline"
                 >
                   Register
@@ -113,7 +85,7 @@ function AuthLayout() {
                 Already have an account?{" "}
                 <a
                   href="#"
-                  onClick={toggleMode}
+                  // onClick={toggleMode}
                   className="text-green-500 hover:underline"
                 >
                   Login
