@@ -1,11 +1,18 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import AuthRegister from './pages/AuthRegister';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import AuthLayout from './Layouts/authLayout';
+import Login from './pages/auth/Login';
+import Register from './pages/auth/Register';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<AuthRegister />} />
+        <Route element={<AuthLayout />}>
+          <Route index element={<Navigate replace to="auth-login" />} />
+          <Route path='auth-login' element={<Login />} />
+          <Route path='auth-register' element={<Register />} />
+        </Route>
+        <Route path='dashboard' element={<Dashboard />} />
       </Routes>
     </BrowserRouter>
   );
