@@ -1,9 +1,11 @@
-import React from 'react'
 
-const Button = () => {
+export default function Button({ children }) {
   return (
-    <div>Button</div>
-  )
+    <button
+      //   disabled={!isFormValid()} ${isFormValid() ? "bg-green-600 hover:bg-green-700": "bg-gray-400 cursor-not-allowed"}
+      className={`text-white rounded px-4 py-2 mt-2 transition `}
+    >
+      {children}
+    </button>
+  );
 }
-
-export default Button

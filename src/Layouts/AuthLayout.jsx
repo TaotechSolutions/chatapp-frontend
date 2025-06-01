@@ -3,51 +3,72 @@ import { BiSolidMessageAltDetail } from "react-icons/bi";
 import { BsTwitterX } from "react-icons/bs";
 import { FaFacebook, FaMessage } from "react-icons/fa6";
 import { GrGoogle } from "react-icons/gr";
-import authImage from "../assets/auth-img.png";
-import { Outlet } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 
 function AuthLayout() {
-  const [login, setLogin] = useState(false);
+  const location = useLocation();
+  const isLogin = location.pathname.includes("auth-login");
+
+  const [showPassword, setShowPassword] = useState(false);
+  const [formData, setFormData] = useState({
+    email: "",
+    username: "",
+    password: "",
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword((show) => !show);
+  };
+
   return (
-    <section className="grid grid-cols-1 md:grid-cols-4 relative">
-      <div className="flex items-center justify-center md:justify-start h-16 gap-4 px-8 mt-12">
-        <BiSolidMessageAltDetail className="text-white text-3xl" />
-        <h2 className="text-white text-3xl font-light ml-6">Doot</h2>
+    <section className="flex flex-col md:flex-row relative">
+      <div className="flex-1 text-center self-center md:self-start gap-4 p-10 text-white">
+        <div className="flex items-center justify-center md:justify-start gap-2 mb-2">
+          <span className="text-2xl">
+            <BiSolidMessageAltDetail />
+          </span>
+          <span className="text-2xl font-semibold">TaoChat</span>
+        </div>
+        <p className="text-gray-300 font-normal text-[14px]">A Community chat application</p>
       </div>
 
-      <div className="bg-white rounded-xl col-span-3 my-6 mx-8 min-h-screen py-8">
-        <div className="w-[90%] lg:w-[40%] mx-auto pt-14">
-          {login ? (
-            <>
-              <h1 className="text-center text-[calc(1.28906rem_+_.46875vw)] text-gray-800 pb-1">
-                Welcome Back!
-              </h1>
-              <p className="text-center text-[15px] text-gray-800">
-                Sign in to continue to Doot
-              </p>
-            </>
-          ) : (
-            <>
-              <h1 className="text-center text-[calc(1.28906rem_+_.46875vw)] text-gray-800 pb-1">
-                Register Account
-              </h1>
-              <p className="text-center text-[15px] text-gray-800">
-                Get your free Doot account now
-              </p>
-            </>
-          )}
+      <div className="bg-white rounded-xl md:w-[75%] m-6 min-h-screen flex justify-center">
+        <div className=" w-[90%] sm:w-2/3 md:w-2/4 lg:w-2/6 py-14">
+          <h1 className="text-center text-[calc(1.28906rem_+_.46875vw)] text-gray-800 !mb-2">
+            {isLogin ? "Welcome Back!" : "Register Account"}
+          </h1>
+          <p className="text-center text-[14px] text-gray-800">
+            {isLogin
+              ? "Sign in to continue to Doot"
+              : "Get your free Doot account now"}
+          </p>
           <div>
-            <Outlet />
+            <Outlet
+              context={{
+                formData,
+                showPassword,
+                handleInputChange,
+                togglePasswordVisibility,
+              }}
+            />
           </div>
-          <div className="flex items-center justify-center gap-4 px-4 md:px-8 my-6">
-            <hr className="w-20 md:w-28 border-gray-300" />
+          <div className="flex items-center justify-center gap-4 my-2">
+            <hr className="w-full md:w-28 border-gray-300" />
             <span className="text-gray-500 text-sm whitespace-nowrap">
-              Sign in with
+              {isLogin ? "Sign in with" : "Sign up using"}
             </span>
-            <hr className="w-20 md:w-28 border-gray-300" />
+            <hr className="w-full md:w-28 border-gray-300" />
           </div>
 
-          <div className="grid grid-cols-3 gap-4 px-8 mt-6">
+          <div className="grid grid-cols-3 gap-4 px-8 mt-4">
             <a
               href="http://"
               className="flex items-center justify-center p-3 bg-gray-400 hover:bg-gray-450 rounded-lg transition-colors duration-300 group"
@@ -68,28 +89,26 @@ function AuthLayout() {
             </a>
           </div>
 
-          <div className="text-center mt-16 text-gray-600 ">
-            {login ? (
+          <div className="text-center mt-10 text-gray-600 ">
+            {isLogin ? (
               <p>
                 Don't have an account?{" "}
-                <a
-                  href="#"
-                  // onClick={toggleMode}
+                <Link
+                  to="/auth-register"
                   className="text-green-500 hover:underline"
                 >
                   Register
-                </a>
+                </Link>
               </p>
             ) : (
               <p>
                 Already have an account?{" "}
-                <a
-                  href="#"
-                  // onClick={toggleMode}
+                <Link
+                  to="/auth-login"
                   className="text-green-500 hover:underline"
                 >
                   Login
-                </a>
+                </Link>
               </p>
             )}
           </div>
@@ -98,7 +117,7 @@ function AuthLayout() {
 
       <div className="invisible md:visible absolute bottom-0 left-[22%] transform -translate-x-1/2 w-[400px] lg:w-[500px] xl:w-[600px] z-10">
         <img
-          src={authImage}
+          src="./auth-img.png"
           alt="Authentication"
           className="w-full h-auto object-contain"
         />
