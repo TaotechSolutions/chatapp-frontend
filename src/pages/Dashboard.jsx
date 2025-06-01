@@ -1,5 +1,5 @@
 import React from "react";
 
 export default function DashBoard() {
-  return <div>Dashboard</div>;
+  return <div className="text-zinc-50">Dashboard</div>;
 }

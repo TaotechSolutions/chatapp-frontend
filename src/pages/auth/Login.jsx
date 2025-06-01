@@ -24,6 +24,7 @@ export default function Login() {
     ) {
       toast.success("Login successful!");
       navigate("/dashboard");
+      return;
     }
 
     toast("Invalid username or password", {
