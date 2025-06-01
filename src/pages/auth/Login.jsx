@@ -1,25 +1,48 @@
-import { FaEye, FaEyeSlash } from "react-icons/fa6";
-import { useOutletContext } from "react-router-dom";
 import AuthForm from "../../components/authForm";
-import { useForm } from "react-hook-form";
 import FormInput from "../../components/FormInput";
 import Button from "../../components/Button";
+import { useNavigate, useOutletContext } from "react-router-dom";
+import toast from "react-hot-toast";
 
 export default function Login() {
-  const {
-    handleSubmit,
-    register,
-    formState: { errors },
-  } = useForm();
+  const { handleSubmit } = useOutletContext();
+  const navigate = useNavigate();
+
+  function onLogin(data) {
+    let currentUser = JSON.parse(localStorage.getItem("user")) || [];
+    console.log(currentUser);
+    console.log(data.username === currentUser.username);
+
+    if (!data.username || !data.password) {
+      return;
+    }
+
+    if (
+      (data.username === currentUser.username ||
+        data.username === currentUser.email) &&
+      data.password === currentUser.password
+    ) {
+      toast.success("Login successful!");
+      navigate("/dashboard");
+    }
+
+    toast("Invalid username or password", {
+      icon: "😏",
+      duration: 4000,
+      style: {
+        backgroundColor: "red",
+        color: "white",
+        padding: "10px",
+      },
+    });
+  }
 
   return (
     <div>
-      <AuthForm onSubmit={handleSubmit}>
+      <AuthForm onSubmit={handleSubmit(onLogin)}>
         <FormInput
           label="Username"
           name="username"
-          register={register}
-          errors={errors}
           placeholder="Enter Username"
         />
         <div className="relative">
@@ -33,8 +56,6 @@ export default function Login() {
             label="Password"
             type="password"
             name="password"
-            register={register}
-            errors={errors}
             placeholder="Enter password"
           />
         </div>

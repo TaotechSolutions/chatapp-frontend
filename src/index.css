@@ -4,7 +4,7 @@
 
 @layer components {
   .input {
-    @apply border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-400;
+    @apply border rounded px-3 py-1 focus:outline-none focus:ring-2 focus:ring-green-400;
   }
   .inputField {
     @apply flex flex-col gap-1;

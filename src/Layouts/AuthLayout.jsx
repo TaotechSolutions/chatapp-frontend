@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useForm } from "react-hook-form";
 import { BiSolidMessageAltDetail } from "react-icons/bi";
 import { BsTwitterX } from "react-icons/bs";
 import { FaFacebook, FaMessage } from "react-icons/fa6";
@@ -8,21 +9,13 @@ import { Link, Outlet, useLocation } from "react-router-dom";
 function AuthLayout() {
   const location = useLocation();
   const isLogin = location.pathname.includes("auth-login");
-
+  const {
+    handleSubmit,
+    register,
+    reset,
+    formState: { errors },
+  } = useForm();
   const [showPassword, setShowPassword] = useState(false);
-  const [formData, setFormData] = useState({
-    email: "",
-    username: "",
-    password: "",
-  });
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
 
   const togglePasswordVisibility = () => {
     setShowPassword((show) => !show);
@@ -37,7 +30,9 @@ function AuthLayout() {
           </span>
           <span className="text-2xl font-semibold">TaoChat</span>
         </div>
-        <p className="text-gray-300 font-normal text-[14px]">A Community chat application</p>
+        <p className="text-gray-300 font-normal text-[14px]">
+          A Community chat application
+        </p>
       </div>
 
       <div className="bg-white rounded-xl md:w-[75%] m-6 min-h-screen flex justify-center">
@@ -53,9 +48,11 @@ function AuthLayout() {
           <div>
             <Outlet
               context={{
-                formData,
                 showPassword,
-                handleInputChange,
+                errors,
+                handleSubmit,
+                reset,
+                register,
                 togglePasswordVisibility,
               }}
             />

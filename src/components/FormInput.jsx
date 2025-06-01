@@ -5,22 +5,20 @@ export default function FormInput({
   label,
   type = "text",
   name,
-  register,
-  errors,
   placeholder,
 }) {
-  const { showPassword, togglePasswordVisibility } = useOutletContext();
+  const {register, errors, showPassword, togglePasswordVisibility } = useOutletContext();
 
   return (
     <div className="inputField">
-      <label htmlFor={name} className="text-gray-700 ">
+      <label htmlFor={name} className="text-gray-700 text-[14px]">
         {label}
       </label>
       {type !== "password" ? (
         <input
           type={type}
           name={name}
-          className="input"
+          className="input text-[14px]"
           placeholder={placeholder}
           {...register(name, { required: `${name} is required!` })}
         />

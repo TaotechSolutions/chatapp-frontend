@@ -1,31 +1,28 @@
-import { useForm } from "react-hook-form";
 import FormInput from "../../components/FormInput";
 import Button from "../../components/Button";
 import AuthForm from "../../components/authForm";
+import { useNavigate, useOutletContext } from "react-router-dom";
+import toast from "react-hot-toast";
 
 export default function Register() {
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm();
+  const { handleSubmit, reset } = useOutletContext();
+  const navigate = useNavigate();
 
-  function onSubmit(data) {
+  function onRegister(data) {
+    localStorage.setItem("user", JSON.stringify(data));
     console.log(data);
-
     reset();
+    toast.success("Registration Successful!");
+    navigate("/auth-login");
   }
 
   return (
     <div>
-      <AuthForm onSubmit={handleSubmit(onSubmit)}>
+      <AuthForm onSubmit={handleSubmit(onRegister)}>
         <FormInput
           label="Email"
           type="text"
           name="email"
-          register={register}
-          errors={errors}
           placeholder="Enter email"
         />
 
@@ -33,8 +30,6 @@ export default function Register() {
           label="Username"
           type="text"
           name="username"
-          register={register}
-          errors={errors}
           placeholder="Enter username"
         />
 
@@ -42,8 +37,6 @@ export default function Register() {
           label="Password"
           type="password"
           name="password"
-          register={register}
-          errors={errors}
           placeholder="Enter password"
         />
 
