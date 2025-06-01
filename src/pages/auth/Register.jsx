@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa6";
 
 export default function Register() {
@@ -87,12 +87,8 @@ export default function Register() {
         </div>
         <button
           type="submit"
-          disabled={!isFormValid()}
-          className={`text-white rounded px-4 py-2 mt-2 transition ${
-            isFormValid()
-              ? "bg-green-600 hover:bg-green-700"
-              : "bg-gray-400 cursor-not-allowed"
-          }`}
+          //   disabled={!isFormValid()} ${isFormValid() ? "bg-green-600 hover:bg-green-700": "bg-gray-400 cursor-not-allowed"}
+          className={`text-white rounded px-4 py-2 mt-2 transition `}
         >
           Register
         </button>
