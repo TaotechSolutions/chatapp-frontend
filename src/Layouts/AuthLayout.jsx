@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { BiSolidMessageAltDetail } from "react-icons/bi";
 import { BsTwitterX } from "react-icons/bs";
-import { FaFacebook, FaMessage } from "react-icons/fa6";
+import { FaFacebook, FaGit, FaGithub, FaMessage } from "react-icons/fa6";
 import { GrGoogle } from "react-icons/gr";
 import { Link, Outlet, useLocation } from "react-router-dom";
 
@@ -65,24 +65,18 @@ function AuthLayout() {
             <hr className="w-full md:w-28 border-gray-300" />
           </div>
 
-          <div className="grid grid-cols-3 gap-4 px-8 mt-4">
+          <div className="flex justify-center gap-4 px-8 mt-4">
             <a
               href="http://"
               className="flex items-center justify-center p-3 bg-gray-400 hover:bg-gray-450 rounded-lg transition-colors duration-300 group"
             >
-              <FaFacebook className="text-xl text-facebook-blue group-hover:scale-110 transition-transform duration-300" />
+              <FaGithub className="text-xl text-black group-hover:scale-110 transition-transform duration-300" />
             </a>
             <a
               href="http://"
               className="flex items-center justify-center p-3 bg-gray-400 hover:bg-gray-450 rounded-lg transition-colors duration-300 group"
             >
-              <BsTwitterX className="text-xl text-twitter-blue group-hover:scale-110 transition-transform duration-300" />
-            </a>
-            <a
-              href="http://"
-              className="flex items-center justify-center p-3 bg-gray-400 hover:bg-gray-450 rounded-lg transition-colors duration-300 group"
-            >
-              <GrGoogle className="text-xl text-google-red group-hover:scale-110 transition-transform duration-300" />
+              <GrGoogle className="text-xl text-blue-500 group-hover:scale-110 transition-transform duration-300" />
             </a>
           </div>
 
