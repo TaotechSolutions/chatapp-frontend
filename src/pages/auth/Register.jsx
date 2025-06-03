@@ -21,14 +21,12 @@ export default function Register() {
       <AuthForm onSubmit={handleSubmit(onRegister)}>
         <FormInput
           label="Email"
-          type="text"
           name="email"
           placeholder="Enter email"
         />
 
         <FormInput
           label="Username"
-          type="text"
           name="username"
           placeholder="Enter username"
         />

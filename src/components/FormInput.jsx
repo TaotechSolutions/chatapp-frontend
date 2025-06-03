@@ -1,13 +1,9 @@
 import { FaEye, FaEyeSlash } from "react-icons/fa6";
 import { useOutletContext } from "react-router-dom";
 
-export default function FormInput({
-  label,
-  type = "text",
-  name,
-  placeholder,
-}) {
-  const {register, errors, showPassword, togglePasswordVisibility } = useOutletContext();
+export default function FormInput({ label, type = "text", name, placeholder }) {
+  const { register, errors, showPassword, togglePasswordVisibility } =
+    useOutletContext();
 
   return (
     <div className="inputField">
@@ -29,7 +25,18 @@ export default function FormInput({
             name={name}
             className="input"
             placeholder={placeholder}
-            {...register(name, { required: `${name} is required!` })}
+            {...register(name, {
+              required: `${name} is required!`,
+              minLength: {
+                value: 8,
+                message: "password must be at least 8 characters long",
+              },
+              pattern: {
+                value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).+$/,
+                message:
+                  "must contain uppercase, lowercase, number, and special character",
+              },
+            })}
           />
           <div
             role="button"
