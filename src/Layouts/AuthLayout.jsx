@@ -34,7 +34,7 @@ function AuthLayout() {
         </p>
       </div>
 
-      <div className="bg-white rounded-xl md:w-[75%] m-6 md:min-h-screen flex justify-center">
+      <div className="bg-white rounded-xl md:w-[75%] m-6 flex justify-center">
         <div className=" w-[90%] sm:w-2/3 md:w-2/4 lg:w-2/6 py-14">
           <h1 className="text-center text-[calc(1.28906rem_+_.46875vw)] text-gray-800 !mb-2">
             {isLogin ? "Welcome Back!" : "Register Account"}
