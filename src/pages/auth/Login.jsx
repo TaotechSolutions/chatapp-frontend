@@ -60,12 +60,12 @@ export default function Login() {
             placeholder="Enter password"
           />
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center justify-start gap-2">
           <input
             type="checkbox"
             id="remember"
             name="remember"
-            className="accent-green-800 text-white basis-[15px]"
+            className="accent-green-800 text-white"
           />
           <label
             htmlFor="remember"
