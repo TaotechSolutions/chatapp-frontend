@@ -1,4 +1,4 @@
-import MessageInput from "./MessageInput";
+import MessageInput from "../component/MessageInput";
 
 function App() {
   const handleSend = ({ message, file }) => {
