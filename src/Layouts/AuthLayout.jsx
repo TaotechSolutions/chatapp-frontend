@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { BiSolidMessageAltDetail } from "react-icons/bi";
-import { BsTwitterX } from "react-icons/bs";
-import { FaFacebook, FaGit, FaGithub, FaMessage } from "react-icons/fa6";
+import { FaGithub } from "react-icons/fa6";
 import { GrGoogle } from "react-icons/gr";
 import { Link, Outlet, useLocation } from "react-router-dom";
 
