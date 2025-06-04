@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import AuthLayout from "./Layouts/AuthLayout";
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
-import DashBoard from "./pages/DashBoard";
+import Dashboard from "./pages/Dashboard"
 import { Toaster } from "react-hot-toast";
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
             <Route path="auth-login" element={<Login />} />
             <Route path="auth-register" element={<Register />} />
           </Route>
-          <Route path="dashboard" element={<DashBoard />} />
+          <Route path="dashboard" element={<Dashboard />} />
         </Routes>
       </BrowserRouter>
       {/* Toaster for notification */}

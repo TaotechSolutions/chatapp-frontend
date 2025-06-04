@@ -1,6 +1,6 @@
 import FormInput from "../../components/FormInput";
 import Button from "../../components/Button";
-import AuthForm from "../../components/authForm";
+import AuthForm from "../../components/AuthForm";
 import { useNavigate, useOutletContext } from "react-router-dom";
 import toast from "react-hot-toast";
 

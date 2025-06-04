@@ -1,4 +1,4 @@
-import AuthForm from "../../components/authForm";
+import AuthForm from "../../components/AuthForm";
 import FormInput from "../../components/FormInput";
 import Button from "../../components/Button";
 import { useNavigate, useOutletContext } from "react-router-dom";
