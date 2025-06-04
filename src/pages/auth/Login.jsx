@@ -69,7 +69,7 @@ export default function Login() {
           />
           <label
             htmlFor="remember"
-            className="text-gray-600 text-sm basis-2/3 font-light"
+            className="text-gray-600 text-sm font-light"
           >
             Remember me
           </label>
