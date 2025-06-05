@@ -1,4 +1,4 @@
-## 📝 Pull Request Title
+## Chat Bubble Component Added
 <!-- Give a clear and concise title for your PR -->
 
 ---
@@ -6,6 +6,9 @@
 ## 📌 Description
 
 Please include a summary of the changes and the related issue.
+-I created the chat bubble component
+-Tested receiving and sending bubbles
+-I added bootstrap link to index.html
 
 ---
 
@@ -13,8 +16,8 @@ Please include a summary of the changes and the related issue.
 
 Please check off the following before submitting your PR:
 
-- [ ] I followed the coding style of the project.
-- [ ] I tested the feature thoroughly.
+- [X] I followed the coding style of the project.
+- [X] I tested the feature thoroughly.
 - [ ] I updated/add necessary documentation (README, API docs, etc).
 - [ ] I’ve added appropriate unit/integration tests.
 
@@ -22,7 +25,7 @@ Please check off the following before submitting your PR:
 
 ## 🔍 Type of Change
 
-- [ ] 🚀 New Feature
+- [X] 🚀 New Feature
 - [ ] 🐛 Bug Fix
 - [ ] 📝 Documentation Update
 - [ ] 🔧 Refactor / Code Cleanup
