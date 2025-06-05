@@ -1,13 +1,27 @@
-import React from "react";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import AuthLayout from "./Layouts/AuthLayout"
+import Login from "./pages/auth/Login";
+import Register from "./pages/auth/Register";
+import Dashboard from "./pages/Dashboard"
+import { Toaster } from "react-hot-toast";
 
 function App() {
-   return (
-     <>
-       <h1 className="flex items-center justify-center min-h-screen bg-darkPrimary text-center font-bold text-darkText text-4xl font-poppins">
-         Welcome to Taotech Solutions 
-       </h1>
-     </>
-   );
- }
+  return (
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route element={<AuthLayout />}>
+            <Route index element={<Navigate replace to="auth-login" />} />
+            <Route path="auth-login" element={<Login />} />
+            <Route path="auth-register" element={<Register />} />
+          </Route>
+          <Route path="dashboard" element={<Dashboard />} />
+        </Routes>
+      </BrowserRouter>
+      {/* Toaster for notification */}
+      <Toaster position="top-center" reverseOrder={false} />
+    </>
+  );
+}
 
 export default App;
