@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { FaUserFriends, FaCommentDots } from "react-icons/fa";
 import ContactList from "./component/ContactList";
@@ -8,6 +9,14 @@ const chatParticipants = [
   { id: 1, name: "Smith" },
   { id: 2, name: "Ali" },
 ];
+
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import AuthLayout from "./Layouts/AuthLayout"
+import Login from "./pages/auth/Login";
+import Register from "./pages/auth/Register";
+import Dashboard from "./pages/Dashboard"
+import { Toaster } from "react-hot-toast";
+
 
 function App() {
   const [view, setView] = useState("contacts");
@@ -23,6 +32,19 @@ function App() {
   };
 
   return (
+ <>
+      <BrowserRouter>
+        <Routes>
+          <Route element={<AuthLayout />}>
+            <Route index element={<Navigate replace to="auth-login" />} />
+            <Route path="auth-login" element={<Login />} />
+            <Route path="auth-register" element={<Register />} />
+          </Route>
+          <Route path="dashboard" element={<Dashboard />} />
+        </Routes>
+      </BrowserRouter>
+      
+
     <div className="flex h-screen">
 
       <div className="w-16 bg-white border-r p-4 flex flex-col items-center space-y-4">
@@ -70,6 +92,10 @@ function App() {
 
 
     </div>
+{/* Toaster for notification */}
+      <Toaster position="top-center" reverseOrder={false} />
+    </>
+   
   );
 }
 
