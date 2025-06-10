@@ -47,33 +47,35 @@ export default function Login() {
     <div>
       <AuthForm onSubmit={handleSubmit(onLogin)}>
         <FormInput
-          label='Username'
-          name='username'
-          placeholder='Enter Username'
+          label="Username"
+          name="username"
+          placeholder="Enter Username"
         />
-        <div className='relative'>
+        <div className="relative">
           <a
-            href='#'
-            className='absolute right-0 top-0.5 text-green-500 text-sm hover:underline'>
+            href="#"
+            className="absolute right-0 top-0.5 text-green-500 text-sm hover:underline"
+          >
             Forgot password?
           </a>
           <FormInput
-            label='Password'
-            type='password'
-            name='password'
-            placeholder='Enter password'
+            label="Password"
+            type="password"
+            name="password"
+            placeholder="Enter password"
           />
         </div>
-        <div className='flex items-center justify-start gap-2'>
+        <div className="flex items-center justify-start gap-2">
           <input
-            type='checkbox'
-            id='remember'
-            name='remember'
-            className='accent-green-800 text-white'
+            type="checkbox"
+            id="remember"
+            name="remember"
+            className="accent-green-800 text-white"
           />
           <label
-            htmlFor='remember'
-            className='text-gray-600 text-sm font-light'>
+            htmlFor="remember"
+            className="text-gray-600 text-sm font-light"
+          >
             Remember me
           </label>
         </div>

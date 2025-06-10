@@ -12,16 +12,16 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route element={<AuthLayout />}>
-            <Route index element={<Navigate replace to='auth-login' />} />
-            <Route path='auth-login' element={<Login />} />
-            <Route path='auth-register' element={<Register />} />
+            <Route index element={<Navigate replace to="auth-login" />} />
+            <Route path="auth-login" element={<Login />} />
+            <Route path="auth-register" element={<Register />} />
           </Route>
-          <Route path='verify-email' element={<VerifyEmail />} />
-          <Route path='dashboard' element={<Dashboard />} />
+          <Route path="verify-email" element={<VerifyEmail />} />
+          <Route path="dashboard" element={<Dashboard />} />
         </Routes>
       </BrowserRouter>
       {/* Toaster for notification */}
-      <Toaster position='top-center' reverseOrder={false} />
+      <Toaster position="top-center" reverseOrder={false} />
     </>
   );
 }
