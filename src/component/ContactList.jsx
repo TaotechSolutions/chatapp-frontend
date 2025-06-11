@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { FaUsers } from "react-icons/fa";
 
 
-const ContactList = ({ onSelect, selectedContacts }) => {
+const ContactList = ({ onSelect, selectedContacts, onCreateGroup }) => {
   const [contacts, setContacts] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -35,13 +35,16 @@ const ContactList = ({ onSelect, selectedContacts }) => {
     <div>
       <div className="flex items-center justify-between mb-2 px-2">
         <span className="text-black font-semibold text-lg">Contacts</span>
-        <button
-  className="!bg-green-600 text-green-600 rounded p-1 hover:bg-green-200 focus:ring-0 focus:ring-transparent"
+<button
+  className="!bg-green-600 text-green-600 rounded p-1 hover:bg-green-200"
   title="Create Group"
-  onClick={() => alert("Open create group modal")}
+  onClick={onCreateGroup}
 >
   <FaUsers className="w-4 h-4" />
 </button>
+
+
+
 
 
       </div>
