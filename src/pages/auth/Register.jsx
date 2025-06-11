@@ -15,7 +15,6 @@ export default function Register() {
       emailVerified: false,
     };
     localStorage.setItem('user', JSON.stringify(userData));
-    console.log(userData);
     reset();
     toast.success('Registration Successful! Please verify your email.');
     navigate('/verify-email');
