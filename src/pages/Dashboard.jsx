@@ -30,7 +30,6 @@ function Dashboard() {
       members: selectedContacts,
     });
 
-    // Reset modal
     setGroupName("");
     setSelectedContacts([]);
     setShowGroupModal(false);
@@ -38,7 +37,7 @@ function Dashboard() {
 
   return (
     <div className="flex h-screen">
-      {/* Sidebar Icons */}
+      {/* Sidebar */}
       <div className="w-16 bg-white border-r p-4 flex flex-col items-center space-y-4">
         <FaCommentDots
           className={`text-2xl cursor-pointer ${
@@ -54,7 +53,7 @@ function Dashboard() {
         />
       </div>
 
-      {/* Contact / Chat List */}
+      {/* Side Panel */}
       <div className="w-64 bg-white border-r p-4 overflow-y-auto">
         {view === "contacts" && (
           <ContactList
@@ -86,7 +85,7 @@ function Dashboard() {
         </button>
       </div>
 
-      {/* Group Creation Modal */}
+      {/* Group Modal */}
       <CreateGroupModal
         isOpen={showGroupModal}
         onClose={() => setShowGroupModal(false)}
