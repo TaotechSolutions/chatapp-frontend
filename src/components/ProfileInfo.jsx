@@ -4,7 +4,7 @@ import { GoPerson } from "react-icons/go";
 
 const ProfileInfo = () => {
   return (
-    <div className="relative -bottom-[10rem] px-6 font-medium text-[17px] text-zinc-500 py-8 flex flex-col gap-7">
+    <div className="mt-35 bg-white px-6 font-medium text-[17px] text-zinc-500 py-8 flex flex-col gap-7">
       <p className="text-center">
         If several languages coalesce, the grammer of the resulting language is
         more simple.

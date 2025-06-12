@@ -1,6 +1,6 @@
 function ProfileDetails() {
   return (
-    <div className="relative flex flex-col items-center border-b border-zinc-300 gap-4 pb-7 -top-10">
+    <div className="relative flex flex-col items-center bg-white border-b border-zinc-300 gap-4 pb-7 -top-10">
       <div className=" w-[100px] h-[100px] rounded-full overflow-hidden border-5 border-zinc-50">
         <img
           className=" w-full h-full object-cover"
