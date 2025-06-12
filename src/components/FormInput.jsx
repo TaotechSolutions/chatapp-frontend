@@ -14,7 +14,7 @@ export default function FormInput({ label, type = 'text', name, placeholder }) {
         <input
           type={type}
           name={name}
-          className="input text-[14px]"
+          className="input text-[14px] outline-none"
           placeholder={placeholder}
           {...register(name, { required: `${name} is required!` })}
         />
@@ -23,7 +23,7 @@ export default function FormInput({ label, type = 'text', name, placeholder }) {
           <input
             type={showPassword ? 'text' : type}
             name={name}
-            className="input"
+            className="input outline-none"
             placeholder={placeholder}
             {...register(name, {
               required: `${name} is required!`,
