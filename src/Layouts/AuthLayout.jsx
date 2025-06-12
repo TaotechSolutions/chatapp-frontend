@@ -4,6 +4,8 @@ import { BiSolidMessageAltDetail } from "react-icons/bi";
 import { FaGithub } from "react-icons/fa6";
 import { GrGoogle } from "react-icons/gr";
 import { Link, Outlet, useLocation } from "react-router-dom";
+import { loginWithGitHub, loginWithGoogle } from "../utils/oauth";
+
 
 function AuthLayout() {
   const location = useLocation();
@@ -65,18 +67,20 @@ function AuthLayout() {
           </div>
 
           <div className="flex justify-center gap-4 px-8 mt-4">
-            <a
-              href="http://"
-              className="flex items-center justify-center p-3 bg-gray-400 hover:bg-gray-450 rounded-lg transition-colors duration-300 group"
+            <button
+              onClick={loginWithGitHub}
+              type="button"
+              className="flex items-center justify-center p-3 bg-gray-400 hover:bg-gray-450 rounded-lg transition-colors duration-300 group cursor-pointer"
             >
-              <FaGithub className="text-xl text-black group-hover:scale-110 transition-transform duration-300" />
-            </a>
-            <a
-              href="http://"
-              className="flex items-center justify-center p-3 bg-gray-400 hover:bg-gray-450 rounded-lg transition-colors duration-300 group"
+              <FaGithub  className="text-xl text-black group-hover:scale-110 transition-transform duration-300" />
+            </button>
+            <button
+              onClick={loginWithGoogle}
+              type="button"
+              className="flex items-center justify-center p-3 bg-gray-400 hover:bg-gray-450 rounded-lg transition-colors duration-300 group cursor-pointer"
             >
               <GrGoogle className="text-xl text-blue-500 group-hover:scale-110 transition-transform duration-300" />
-            </a>
+            </button>
           </div>
 
           <div className="text-center mt-10 text-gray-600 ">

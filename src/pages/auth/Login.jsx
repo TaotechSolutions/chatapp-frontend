@@ -1,46 +1,51 @@
+import { useEffect, useState } from "react";
 import AuthForm from "../../components/AuthForm";
 import FormInput from "../../components/FormInput";
 import Button from "../../components/Button";
-import { useNavigate, useOutletContext } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import useAuth from "../../hooks/useAuth";
+import { loginUser } from "../../features/auth/authActions";
 import toast from "react-hot-toast";
 
 export default function Login() {
-  const { handleSubmit } = useOutletContext();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { isAuthenticated, error, loading } = useAuth();
+  const [rememberMe, setRememberMe] = useState(false);
 
-  function onLogin(data) {
-    let currentUser = JSON.parse(localStorage.getItem("user")) || [];
-    console.log(currentUser);
-    console.log(data.username === currentUser.username);
-
-    if (!data.username || !data.password) {
-      return;
-    }
-
-    if (
-      (data.username === currentUser.username ||
-        data.username === currentUser.email) &&
-      data.password === currentUser.password
-    ) {
+  useEffect(() => {
+    if (isAuthenticated) {
       toast.success("Login successful!");
       navigate("/dashboard");
-      return;
+    }
+  }, [isAuthenticated, navigate]);
+
+  function onLogin(data) {
+    if (!data.username || !data.password) {
+      return toast.error("Please fill in all fields");
     }
 
-    toast("Invalid username or password", {
-      icon: "😏",
-      duration: 4000,
-      style: {
-        backgroundColor: "red",
-        color: "white",
-        padding: "10px",
-      },
-    });
+    dispatch(
+      loginUser({
+        email: data.username,
+        password: data.password,
+        rememberMe
+      })
+    )
+      .unwrap()
+      .then(() => {
+        toast.success("Login successful!");
+        navigate("/dashboard");
+      })
+      .catch((err) => {
+        toast.error(err || "Login failed");
+      });
   }
 
   return (
     <div>
-      <AuthForm onSubmit={handleSubmit(onLogin)}>
+      <AuthForm onSubmit={onLogin}>
         <FormInput
           label="Username"
           name="username"
@@ -66,6 +71,8 @@ export default function Login() {
             id="remember"
             name="remember"
             className="accent-green-800 text-white"
+            checked={rememberMe}
+            onChange={(e) => setRememberMe(e.target.checked)}
           />
           <label
             htmlFor="remember"
@@ -74,7 +81,10 @@ export default function Login() {
             Remember me
           </label>
         </div>
-        <Button>Login</Button>
+        {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
+        <Button disabled={loading}>
+          {loading ? "Logging in..." : "Login"}
+        </Button>
       </AuthForm>
     </div>
   );
