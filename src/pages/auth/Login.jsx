@@ -3,6 +3,7 @@ import FormInput from '../../components/FormInput';
 import Button from '../../components/Button';
 import { useNavigate, useOutletContext } from 'react-router-dom';
 import toast from 'react-hot-toast';
+import { ADMIN_CREDENTIALS } from '../../utils/admins';
 
 export default function Login() {
   const { handleSubmit } = useOutletContext();
@@ -10,24 +11,35 @@ export default function Login() {
 
   function onLogin(data) {
     let currentUser = JSON.parse(localStorage.getItem('user')) || [];
+    let admin = ADMIN_CREDENTIALS.some(
+      info => data.email === info.email && data.password === info.password,
+    );
 
-    if (!data.username || !data.password) {
+    if (!data.email || !data.password) {
+      return;
+    }
+
+    if (admin) {
+      toast.success('Login as admin successful!');
+      console.log('Logged in as admin');
+      navigate('/dashboard');
       return;
     }
 
     if (
-      (data.username === currentUser.username ||
-        data.username === currentUser.email) &&
+      data.email === currentUser.email &&
       data.password === currentUser.password
     ) {
       // Check email verification status
       if (!currentUser.emailVerified) {
         toast.error('Please verify your email first');
         navigate('/verify-email');
+        console.log('Verify mail');
         return;
       }
 
       toast.success('Login successful!');
+      console.log('logged in as user');
       navigate('/dashboard');
       return;
     }
@@ -47,9 +59,10 @@ export default function Login() {
     <div>
       <AuthForm onSubmit={handleSubmit(onLogin)}>
         <FormInput
-          label="Username"
-          name="username"
-          placeholder="Enter Username"
+          label="Email"
+          name="email"
+          type="email"
+          placeholder="Enter Email"
         />
         <div className="relative">
           <a
