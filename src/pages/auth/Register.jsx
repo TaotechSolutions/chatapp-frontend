@@ -1,19 +1,23 @@
-import FormInput from "../../components/FormInput";
-import Button from "../../components/Button";
-import AuthForm from "../../components/authForm";
-import { useNavigate, useOutletContext } from "react-router-dom";
-import toast from "react-hot-toast";
+import FormInput from '../../components/FormInput';
+import Button from '../../components/Button';
+import AuthForm from '../../components/AuthForm';
+import { useNavigate, useOutletContext } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 export default function Register() {
   const { handleSubmit, reset } = useOutletContext();
   const navigate = useNavigate();
 
   function onRegister(data) {
-    localStorage.setItem("user", JSON.stringify(data));
-    console.log(data);
+    // Add emailVerified status to user data
+    const userData = {
+      ...data,
+      emailVerified: false,
+    };
+    localStorage.setItem('user', JSON.stringify(userData));
     reset();
-    toast.success("Registration Successful!");
-    navigate("/auth-login");
+    toast.success('Registration Successful! Please verify your email.');
+    navigate('/verify-email');
   }
 
   return (

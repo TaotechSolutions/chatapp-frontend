@@ -1,39 +1,56 @@
-import AuthForm from "../../components/authForm";
-import FormInput from "../../components/FormInput";
-import Button from "../../components/Button";
-import { useNavigate, useOutletContext } from "react-router-dom";
-import toast from "react-hot-toast";
+import AuthForm from '../../components/AuthForm';
+import FormInput from '../../components/FormInput';
+import Button from '../../components/Button';
+import { useNavigate, useOutletContext } from 'react-router-dom';
+import toast from 'react-hot-toast';
+import { ADMIN_CREDENTIALS } from '../../utils/admins';
 
 export default function Login() {
   const { handleSubmit } = useOutletContext();
   const navigate = useNavigate();
 
   function onLogin(data) {
-    let currentUser = JSON.parse(localStorage.getItem("user")) || [];
-    console.log(currentUser);
-    console.log(data.username === currentUser.username);
+    let currentUser = JSON.parse(localStorage.getItem('user')) || [];
+    let admin = ADMIN_CREDENTIALS.some(
+      info => data.email === info.email && data.password === info.password,
+    );
 
-    if (!data.username || !data.password) {
+    if (!data.email || !data.password) {
+      return;
+    }
+
+    if (admin) {
+      toast.success('Login as admin successful!');
+      console.log('Logged in as admin');
+      navigate('/dashboard');
       return;
     }
 
     if (
-      (data.username === currentUser.username ||
-        data.username === currentUser.email) &&
+      data.email === currentUser.email &&
       data.password === currentUser.password
     ) {
-      toast.success("Login successful!");
-      navigate("/dashboard");
+      // Check email verification status
+      if (!currentUser.emailVerified) {
+        toast.error('Please verify your email first');
+        navigate('/verify-email');
+        console.log('Verify mail');
+        return;
+      }
+
+      toast.success('Login successful!');
+      console.log('logged in as user');
+      navigate('/dashboard');
       return;
     }
 
-    toast("Invalid username or password", {
-      icon: "😏",
+    toast('Invalid username or password', {
+      icon: '😏',
       duration: 4000,
       style: {
-        backgroundColor: "red",
-        color: "white",
-        padding: "10px",
+        backgroundColor: 'red',
+        color: 'white',
+        padding: '10px',
       },
     });
   }
@@ -42,9 +59,10 @@ export default function Login() {
     <div>
       <AuthForm onSubmit={handleSubmit(onLogin)}>
         <FormInput
-          label="Username"
-          name="username"
-          placeholder="Enter Username"
+          label="Email"
+          name="email"
+          type="email"
+          placeholder="Enter Email"
         />
         <div className="relative">
           <a
@@ -60,16 +78,16 @@ export default function Login() {
             placeholder="Enter password"
           />
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center justify-start gap-2">
           <input
             type="checkbox"
             id="remember"
             name="remember"
-            className="accent-green-800 text-white basis-[15px]"
+            className="accent-green-800 text-white"
           />
           <label
             htmlFor="remember"
-            className="text-gray-600 text-sm basis-2/3 font-light"
+            className="text-gray-600 text-sm font-light"
           >
             Remember me
           </label>
