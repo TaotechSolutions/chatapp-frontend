@@ -1,5 +1,3 @@
-
-
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import AuthLayout from "./Layouts/authLayout";
 import Login from "./pages/auth/Login";
@@ -9,6 +7,7 @@ import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
+    <>
       <BrowserRouter>
         <Routes>
           <Route element={<AuthLayout />}>
@@ -21,7 +20,8 @@ function App() {
       </BrowserRouter>
       {/* Toaster for notification */}
       <Toaster position="top-center" reverseOrder={false} />
-
+      </>
+  );
 }
 
 export default App;
