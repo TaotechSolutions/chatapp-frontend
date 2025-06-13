@@ -20,7 +20,16 @@ export default function Login() {
     }
 
     if (admin) {
-      toast.success('Login as admin successful!');
+      toast('Logged in as Admin', {
+        icon: '👩‍💻',
+        duration: 4000,
+        style: {
+          width: '300px',
+          height: '60px',
+          backgroundColor: 'White',
+          padding: '15px',
+        },
+      });
       console.log('Logged in as admin');
       navigate('/dashboard');
       return;
