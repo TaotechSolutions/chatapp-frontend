@@ -38,7 +38,7 @@ export const logoutUser = createAsyncThunk(LOGOUT, async (_, thunkAPI) => {
 
 export const setUserFromCookie = createAsyncThunk(SET_USER_FROM_COOKIE, async (_, thunkAPI) => {
   try {
-     const res = await authApi.get('/user', { withCredentials: true });
+     const res = await authApi.get(SET_USER_FROM_COOKIE, { withCredentials: true });
       const user = res.data.data;
 
     const rememberMe = localStorage.getItem("rememberMe") === "true";
