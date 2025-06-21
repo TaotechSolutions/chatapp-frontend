@@ -6,8 +6,13 @@ import tailwindcss from "@tailwindcss/vite";
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  // server: {
-  //   https: true,
-  //   port: 5173
-  // }
+  server: {
+    proxy: {
+      '/api': {
+        target: 'https://chatapp-backend-vws5.onrender.com',
+        changeOrigin: true,
+        secure: false,
+      },
+    },
+  },
 });
