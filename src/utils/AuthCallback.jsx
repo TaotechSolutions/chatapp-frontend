@@ -14,7 +14,7 @@ function AuthCallback() {
         .unwrap()
         .then(() => navigate("/dashboard"))
         .catch(() => navigate("/auth-login"));
-    }, 100); // 100ms delay
+    }, 10000); // 100ms delay
 
     return () => clearTimeout(timer);
   }, [dispatch, navigate]);
