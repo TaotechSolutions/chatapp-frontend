@@ -3,55 +3,54 @@ import { setUserFromCookie } from "../features/auth/authActions";
 import { setInMemoryToken } from "./authToken";
 
 const BASE_URL = import.meta.env.VITE_API_URL;
+const GIT_URL = import.meta.env.VITE_GIT_URL;
 
-export const loginWithGoogle = () => {
+const loginWithOAuthProvider = (url) => {
   localStorage.setItem("rememberMe", "true");
-  const popup = window.open(
-    `${BASE_URL}/user/google?env=${import.meta.env.VITE_ENV}`,
-    "_blank",
-    "width=500,height=600"
-  );
+
+  const popup = window.open(url, "_blank", "width=500,height=600");
 
   if (!popup) {
     alert("Popup blocked! Please allow popups in your browser.");
     return;
   }
 
-  // Fallback flow inside window message listener
-  window.addEventListener("message", async function handler(event) {
+  const handleMessage = async (event) => {
     if (!event.data || event.data.type !== "OAUTH_SUCCESS") return;
-    const token = event.data.token;
 
-    // Close popup
-    // popup.close();
-    window.removeEventListener("message", handler);
+    const token = event.data.token;
+    window.removeEventListener("message", handleMessage);
 
     try {
-      // First, try cookie-based request
+      // First try cookie-based login
       await store.dispatch(setUserFromCookie()).unwrap();
       window.location.href = "/dashboard";
     } catch (err) {
       console.warn("Cookie auth failed, falling back to token auth", err);
 
-      // Fallback (no cookie) – store token in memory only
       if (token) {
         setInMemoryToken(token);
 
         try {
           await store.dispatch(setUserFromCookie()).unwrap();
         } catch (err) {
-          console.warn("token auth failed as well, no fallback", err);
+          console.warn("Token auth failed as well", err);
         }
-        // Proceed as logged in (in memory only)
+
         window.location.href = "/dashboard";
       } else {
         window.location.href = "/auth-login";
       }
     }
-  });
+  };
+
+  window.addEventListener("message", handleMessage);
+};
+
+export const loginWithGoogle = () => {
+  loginWithOAuthProvider(`${BASE_URL}/user/google?env=${import.meta.env.VITE_ENV}`);
 };
 
 export const loginWithGitHub = () => {
-  localStorage.setItem("rememberMe", "true");
-  window.location.href = `${BASE_URL}/user/github`;
+  loginWithOAuthProvider(`${GIT_URL}/user/github`);
 };
