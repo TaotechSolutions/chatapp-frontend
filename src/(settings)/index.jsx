@@ -11,7 +11,7 @@ const SettingSideBar = ({
   bgimage,
 }) => {
   return (
-    <div className="bg-white fixed w-[300px] h-full">
+    <div className="bg-white fixed w-full h-full md:w-[300px]">
       <Background />
       <SideBar
         changeTheme={changeTheme}

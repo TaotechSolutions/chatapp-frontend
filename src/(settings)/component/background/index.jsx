@@ -4,7 +4,7 @@ import React, { useState } from "react";
 
 const Background = () => {
   const [background, setBackground] = useState();
-  const [profilePhoto, setProfilePhoto] = useState("/profile picture1.jpg"); // default profile
+  const [profilePhoto, setProfilePhoto] = useState("https://doot-light.react.themesbrand.com/static/media/avatar-1.9c8e605558cece65b06c.jpg"); // default profile
 
   const handleChangeBackground = (e) => {
     const file = e.target.files[0];
@@ -29,7 +29,7 @@ const Background = () => {
   };
 
   return (
-    <div className="w-full max-w-xl mx-auto">
+    <div className="w-full">
       {/* Header Background */}
       <div
         className="relative w-full h-44 overflow-hidden"
