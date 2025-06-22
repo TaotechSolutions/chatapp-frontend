@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import authApi from '../../api/authApi';
 import { LOGIN, REGISTER, LOGOUT, SET_USER_FROM_COOKIE } from './authTypes';
+import { clearInMemoryToken } from '../../utils/authToken';
 
 export const loginUser = createAsyncThunk(LOGIN, async ({ email, password, rememberMe }, thunkAPI) => {
   try {
@@ -30,6 +31,7 @@ export const logoutUser = createAsyncThunk(LOGOUT, async (_, thunkAPI) => {
   try {
     await authApi.post(LOGOUT);
     localStorage.removeItem("user");
+    clearInMemoryToken();
     return null;
   } catch (err) {
     return thunkAPI.rejectWithValue(err.response?.data?.message || 'Logout failed');

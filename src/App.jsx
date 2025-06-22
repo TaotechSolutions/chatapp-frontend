@@ -5,7 +5,6 @@ import Register from "./pages/auth/Register";
 import Dashboard from "./pages/Dashboard";
 import { Toaster } from "react-hot-toast";
 import { useSelector } from "react-redux";
-import AuthCallback from "./utils/AuthCallback";
 
 function App() {
   const { isAuthenticated } = useSelector((state) => state.auth);
@@ -31,7 +30,6 @@ function App() {
             />
           </Route>
           <Route path="dashboard" element={<Dashboard />} />
-          <Route path="/auth-callback" element={<AuthCallback />} />
         </Routes>
       </BrowserRouter>
       {/* Toaster for notification */}
