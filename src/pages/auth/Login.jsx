@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import AuthForm from "../../components/AuthForm";
 import FormInput from "../../components/FormInput";
 import Button from "../../components/Button";
-import { useNavigate } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 import { useDispatch } from "react-redux";
 import useAuth from "../../hooks/useAuth";
 import { loginUser } from "../../features/auth/authActions";
@@ -54,15 +54,17 @@ export default function Login() {
       .catch((err) => {
         toast.error(err || "Login failed");
       });
-  }
+
+    }
 
   return (
     <div>
       <AuthForm onSubmit={onLogin}>
         <FormInput
-          label="Username"
-          name="username"
-          placeholder="Enter Username"
+          label="Email"
+          name="email"
+          type="email"
+          placeholder="Enter Email"
         />
         <div className="relative">
           <a

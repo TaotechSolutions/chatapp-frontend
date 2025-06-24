@@ -1,7 +1,7 @@
-import { FaEye, FaEyeSlash } from "react-icons/fa6";
-import { useOutletContext } from "react-router-dom";
+import { FaEye, FaEyeSlash } from 'react-icons/fa6';
+import { useOutletContext } from 'react-router-dom';
 
-export default function FormInput({ label, type = "text", name, placeholder }) {
+export default function FormInput({ label, type = 'text', name, placeholder }) {
   const { register, errors, showPassword, togglePasswordVisibility } =
     useOutletContext();
 
@@ -10,31 +10,31 @@ export default function FormInput({ label, type = "text", name, placeholder }) {
       <label htmlFor={name} className="text-gray-700 text-[14px]">
         {label}
       </label>
-      {type !== "password" ? (
+      {type !== 'password' ? (
         <input
           type={type}
           name={name}
-          className="input text-[14px]"
+          className="input text-[14px] outline-none"
           placeholder={placeholder}
           {...register(name, { required: `${name} is required!` })}
         />
       ) : (
         <div className="relative">
           <input
-            type={showPassword ? "text" : type}
+            type={showPassword ? 'text' : type}
             name={name}
-            className="input"
+            className="input outline-none"
             placeholder={placeholder}
             {...register(name, {
               required: `${name} is required!`,
               minLength: {
                 value: 8,
-                message: "password must be at least 8 characters long",
+                message: 'password must be at least 8 characters long',
               },
               pattern: {
                 value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).+$/,
                 message:
-                  "must contain uppercase, lowercase, number, and special character",
+                  'must contain uppercase, lowercase, number, and special character',
               },
             })}
           />

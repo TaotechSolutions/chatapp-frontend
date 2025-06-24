@@ -9,7 +9,7 @@ import { loginWithGitHub, loginWithGoogle } from "../utils/oauth";
 
 function AuthLayout() {
   const location = useLocation();
-  const isLogin = location.pathname.includes("auth-login");
+  const isLogin = location.pathname.includes('auth-login');
   const {
     handleSubmit,
     register,
@@ -19,7 +19,7 @@ function AuthLayout() {
   const [showPassword, setShowPassword] = useState(false);
 
   const togglePasswordVisibility = () => {
-    setShowPassword((show) => !show);
+    setShowPassword(show => !show);
   };
 
   return (
@@ -39,12 +39,12 @@ function AuthLayout() {
       <div className="bg-white rounded-xl md:w-[75%] m-6 flex justify-center">
         <div className=" w-[90%] sm:w-2/3 md:w-2/4 lg:w-2/6 py-14">
           <h1 className="text-center text-[calc(1.28906rem_+_.46875vw)] text-gray-800 !mb-2">
-            {isLogin ? "Welcome Back!" : "Register Account"}
+            {isLogin ? 'Welcome Back!' : 'Register Account'}
           </h1>
           <p className="text-center text-[14px] text-gray-800">
             {isLogin
-              ? "Sign in to continue to Doot"
-              : "Get your free Doot account now"}
+              ? 'Sign in to continue to Doot'
+              : 'Get your free Doot account now'}
           </p>
           <div>
             <Outlet
@@ -61,7 +61,7 @@ function AuthLayout() {
           <div className="flex items-center justify-center gap-4 my-2">
             <hr className="w-full md:w-28 border-gray-300" />
             <span className="text-gray-500 text-sm whitespace-nowrap">
-              {isLogin ? "Sign in with" : "Sign up using"}
+              {isLogin ? 'Sign in with' : 'Sign up using'}
             </span>
             <hr className="w-full md:w-28 border-gray-300" />
           </div>
@@ -86,7 +86,7 @@ function AuthLayout() {
           <div className="text-center mt-10 text-gray-600 ">
             {isLogin ? (
               <p>
-                Don't have an account?{" "}
+                Don't have an account?{' '}
                 <Link
                   to="/auth-register"
                   className="text-green-500 hover:underline"
@@ -96,7 +96,7 @@ function AuthLayout() {
               </p>
             ) : (
               <p>
-                Already have an account?{" "}
+                Already have an account?{' '}
                 <Link
                   to="/auth-login"
                   className="text-green-500 hover:underline"

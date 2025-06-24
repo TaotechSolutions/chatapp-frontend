@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import AuthLayout from "./Layouts/AuthLayout";
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
+import VerifyEmail from './pages/auth/VerifyEmail';
 import Dashboard from "./pages/Dashboard";
 import { Toaster } from "react-hot-toast";
 import { useSelector } from "react-redux";
@@ -31,6 +32,7 @@ function App() {
               }
             />
           </Route>
+          <Route path="verify-email" element={<VerifyEmail />} />
           <Route path="dashboard" element={<Dashboard />} />
         </Routes>
       </BrowserRouter>
