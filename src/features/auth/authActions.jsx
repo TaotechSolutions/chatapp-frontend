@@ -1,31 +1,39 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
-import authApi from '../../api/authApi';
-import { LOGIN, REGISTER, LOGOUT, SET_USER_FROM_COOKIE } from './authTypes';
-import { clearInMemoryToken } from '../../utils/authToken';
+import { createAsyncThunk } from "@reduxjs/toolkit";
+import authApi from "../../api/authApi";
+import { LOGIN, REGISTER, LOGOUT, SET_USER_FROM_COOKIE } from "./authTypes";
+import { clearInMemoryToken } from "../../utils/authToken";
 
-export const loginUser = createAsyncThunk(LOGIN, async ({ email, password, rememberMe }, thunkAPI) => {
-  try {
-    const res = await authApi.post(LOGIN, { email, password });
-    const user = res.data.data;
+export const loginUser = createAsyncThunk(
+  LOGIN,
+  async ({ email, password, rememberMe }, thunkAPI) => {
+    try {
+      const res = await authApi.post(LOGIN, { email, password, rememberMe });
+      const user = res.data.data.user;
 
-    if (rememberMe) {
       localStorage.setItem("user", JSON.stringify(user));
+
+      return user;
+    } catch (err) {
+      return thunkAPI.rejectWithValue(
+        err.response?.data?.message || "Login failed"
+      );
     }
-
-    return user;
-  } catch (err) {
-    return thunkAPI.rejectWithValue(err.response?.data?.message || 'Login failed');
   }
-});
+);
 
-export const registerUser = createAsyncThunk(REGISTER, async ({ name, email, password }, thunkAPI) => {
-  try {
-    const res = await authApi.post(REGISTER, { name, email, password });
-    return res.data.user;
-  } catch (err) {
-    return thunkAPI.rejectWithValue(err.response?.data?.message || 'Registration failed');
+export const registerUser = createAsyncThunk(
+  REGISTER,
+  async ({ name, email, password }, thunkAPI) => {
+    try {
+      const res = await authApi.post(REGISTER, { name, email, password });
+      return res.data.user;
+    } catch (err) {
+      return thunkAPI.rejectWithValue(
+        err.response?.data?.message || "Registration failed"
+      );
+    }
   }
-});
+);
 
 export const logoutUser = createAsyncThunk(LOGOUT, async (_, thunkAPI) => {
   try {
@@ -34,25 +42,26 @@ export const logoutUser = createAsyncThunk(LOGOUT, async (_, thunkAPI) => {
     clearInMemoryToken();
     return null;
   } catch (err) {
-    return thunkAPI.rejectWithValue(err.response?.data?.message || 'Logout failed');
+    return thunkAPI.rejectWithValue(
+      err.response?.data?.message || "Logout failed"
+    );
   }
 });
 
-export const setUserFromCookie = createAsyncThunk(SET_USER_FROM_COOKIE, async (_, thunkAPI) => {
-  try {
-     const res = await authApi.get("/user");
+export const setUserFromCookie = createAsyncThunk(
+  SET_USER_FROM_COOKIE,
+  async (_, thunkAPI) => {
+    try {
+      const res = await authApi.get("/user");
       const user = res.data.data;
 
-    const rememberMe = localStorage.getItem("rememberMe") === "true";
-
-    if (rememberMe) {
       localStorage.setItem("user", JSON.stringify(user));
-    } else {
-      localStorage.removeItem("user");
-    }
 
-    return user;
-  } catch (err) {
-    return thunkAPI.rejectWithValue(err.response?.data?.message || 'Fetching user from cookie failed');
+      return user;
+    } catch (err) {
+      return thunkAPI.rejectWithValue(
+        err.response?.data?.message || "Fetching user from cookie failed"
+      );
+    }
   }
-});
+);

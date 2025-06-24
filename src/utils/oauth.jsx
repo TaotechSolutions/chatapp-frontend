@@ -3,7 +3,6 @@ import { setUserFromCookie } from "../features/auth/authActions";
 import { setInMemoryToken } from "./authToken";
 
 const BASE_URL = import.meta.env.VITE_API_URL;
-const GIT_URL = import.meta.env.VITE_GIT_URL;
 
 const loginWithOAuthProvider = (url) => {
   localStorage.setItem("rememberMe", "true");
@@ -52,5 +51,5 @@ export const loginWithGoogle = () => {
 };
 
 export const loginWithGitHub = () => {
-  loginWithOAuthProvider(`${GIT_URL}/user/github`);
+  loginWithOAuthProvider(`${BASE_URL}/user/github`);
 };

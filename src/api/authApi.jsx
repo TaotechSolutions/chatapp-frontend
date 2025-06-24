@@ -26,12 +26,14 @@ authApi.interceptors.request.use((config) => {
 authApi.interceptors.response.use(
   (response) => response,
   (error) => {
-    if (
-      error.response &&
-      error.response.status === 401 &&
-      getAuthMode() === 'cookie'
-    ) {
-      // Switch to token mode
+    const config = error.config || {};
+
+    const is401 = error.response?.status === 401;
+    const isCookieMode = getAuthMode() === 'cookie';
+    const skipFallback = config._skipAuthModeFallback;
+
+    if (is401 && isCookieMode && !skipFallback) {
+      // Only switch to token mode if not explicitly suppressed
       setAuthMode('token');
     }
 

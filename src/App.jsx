@@ -5,8 +5,10 @@ import Register from "./pages/auth/Register";
 import Dashboard from "./pages/Dashboard";
 import { Toaster } from "react-hot-toast";
 import { useSelector } from "react-redux";
+import useSessionCheck from "./hooks/useSessionCheck";
 
 function App() {
+  useSessionCheck();
   const { isAuthenticated } = useSelector((state) => state.auth);
   return (
     <>

@@ -14,6 +14,19 @@ export default function Login() {
   const { isAuthenticated, error, loading } = useAuth();
   const [rememberMe, setRememberMe] = useState(false);
 
+   // Sync with localStorage on first load
+  useEffect(() => {
+    const storedRememberMe = localStorage.getItem("rememberMe");
+    setRememberMe(storedRememberMe === "true");
+  }, []);
+
+  // Update localStorage whenever rememberMe changes
+  const handleRememberMeChange = (e) => {
+    const isChecked = e.target.checked;
+    setRememberMe(isChecked);
+    localStorage.setItem("rememberMe", isChecked.toString());
+  };
+
   useEffect(() => {
     if (isAuthenticated) {
       toast.success("Login successful!");
@@ -72,7 +85,7 @@ export default function Login() {
             name="remember"
             className="accent-green-800 text-white"
             checked={rememberMe}
-            onChange={(e) => setRememberMe(e.target.checked)}
+            onChange={handleRememberMeChange}
           />
           <label
             htmlFor="remember"

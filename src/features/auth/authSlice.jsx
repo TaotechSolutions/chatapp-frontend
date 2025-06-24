@@ -6,21 +6,30 @@ import {
   setUserFromCookie,
 } from "./authActions";
 
-const userFromStorage = localStorage.getItem("rememberMe") === "true"
-  ? JSON.parse(localStorage.getItem("user"))
-  : null;
+const userFromStorage = JSON.parse(localStorage.getItem("user"));
 
 const initialState = {
   user: userFromStorage,
   loading: false,
   error: null,
-  isAuthenticated: !!userFromStorage,
+  isAuthenticated: false, // Don't trust localStorage, wait for BE check
 };
 
 const authSlice = createSlice({
   name: "auth",
   initialState,
-  reducers: {},
+  reducers: {
+    setUser: (state, action) => {
+      state.user = action.payload;
+      state.isAuthenticated = true;
+      localStorage.setItem("user", JSON.stringify(action.payload));
+    },
+    clearUser: (state) => {
+      state.user = null;
+      state.isAuthenticated = false;
+      localStorage.removeItem("user");
+    },
+  },
   extraReducers: (builder) => {
     builder
       // LOGIN
@@ -83,4 +92,5 @@ const authSlice = createSlice({
   },
 });
 
+export const { setUser, clearUser } = authSlice.actions;
 export default authSlice.reducer;
