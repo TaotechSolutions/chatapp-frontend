@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { FaCommentDots, FaUserFriends } from "react-icons/fa";
-import ContactList from "../component/ContactList";
-import ChatList from "../component/ChatList";
-import CreateGroupModal from "../component/CreateGroupModal";
+import ContactList from "../components/ContactList";
+import ChatList from "../components/ChatList";
+import CreateGroupModal from "../components/CreateGroupModal";
 
 function Dashboard() {
   const [view, setView] = useState("contacts");
