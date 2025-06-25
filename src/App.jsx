@@ -22,7 +22,7 @@ function App() {
       </BrowserRouter>
       {/* Toaster for notification */}
       <Toaster position="top-center" reverseOrder={false} />
-    </>
+      </>
   );
 }
 
