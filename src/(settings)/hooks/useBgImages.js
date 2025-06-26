@@ -34,6 +34,10 @@ export const useBgImages = () => {
     },
   ];
 
+
+
+
+  
   return {
     bgImages,
     setbgImages,
