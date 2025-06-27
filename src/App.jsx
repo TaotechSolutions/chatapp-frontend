@@ -5,9 +5,11 @@ import Register from './pages/auth/Register';
 import VerifyEmail from './pages/auth/VerifyEmail';
 import Dashboard from './pages/Dashboard';
 import { Toaster } from 'react-hot-toast';
-import MainLayout from './mainLayout';
+// import MainLayout from './mainLayout';
+// import MainLayout from './mainLayout';
 import { useBgImages } from './(settings)/hooks/useBgImages';
 import { useChangetheme } from './(settings)/hooks/useChangetheme ';
+import MainLayout from './TheMainLayout';
 
 function App() {
   const { bgImages, setbgImages, bgimage } = useBgImages();

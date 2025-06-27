@@ -1,6 +1,4 @@
 import React from 'react';
-import { useBgImages } from './(settings)/hooks/useBgImages';
-import { useChangetheme } from './(settings)/hooks/useChangetheme ';
 import SettingSideBar from './(settings)';
 
 const MainLayout = ( { bgImages, setbgImages, bgimage, changeTheme, setchangeTheme, colours }) => {
@@ -14,6 +12,9 @@ const MainLayout = ( { bgImages, setbgImages, bgimage, changeTheme, setchangeThe
           backgroundPosition: 'center',
         }}
       >
+         
+          
+        
         <SettingSideBar bgimage={bgimage} setbgImages={setbgImages}  setchangeTheme={setchangeTheme} colours={colours}/>
       </div>
     </div>
