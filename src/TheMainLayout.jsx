@@ -1,7 +1,15 @@
 import React from 'react';
 import SettingSideBar from './(settings)';
+import { Outlet } from 'react-router-dom';
 
-const MainLayout = ( { bgImages, setbgImages, bgimage, changeTheme, setchangeTheme, colours }) => {
+const MainLayout = ({
+  bgImages,
+  setbgImages,
+  bgimage,
+  changeTheme,
+  setchangeTheme,
+  colours,
+}) => {
   return (
     <div>
       <div
@@ -12,10 +20,15 @@ const MainLayout = ( { bgImages, setbgImages, bgimage, changeTheme, setchangeThe
           backgroundPosition: 'center',
         }}
       >
-         
-          
-        
-        <SettingSideBar bgimage={bgimage} setbgImages={setbgImages}  setchangeTheme={setchangeTheme} colours={colours}/>
+        <SettingSideBar
+          bgimage={bgimage}
+          setbgImages={setbgImages}
+          setchangeTheme={setchangeTheme}
+          colours={colours}
+        />
+      </div>
+      <div className="flex items-center justify-center">
+        <Outlet />
       </div>
     </div>
   );
