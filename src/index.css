@@ -1,9 +1,7 @@
 
-
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
-@import 'tailwindcss';
-@import "tw-animate-css";
+
 
 @custom-variant dark (&:is(.dark *));
 @layer components {
@@ -82,7 +80,7 @@ h6 {
 }
 
 /* Buttons */
-/* button {
+button {
   @apply bg-green-800 text-white font-medium py-2 px-4 rounded shadow-md;
   transition: all 0.2s ease-in-out;
 }
@@ -93,11 +91,11 @@ button:hover {
 
 button:focus {
   @apply outline-none ring-2 ring-green-300;
-} */
+} 
 
-/* button:disabled {
+button:disabled {
   @apply bg-gray-300 text-gray-600 cursor-not-allowed;
-} */
+}
 
 /* Inputs and Forms */
 input,

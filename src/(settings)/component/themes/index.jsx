@@ -16,7 +16,7 @@ const Themes = ({ bgImages, setbgImages, bgimage, changeTheme, setchangeTheme, c
         </p>
         <div className="flex gap-2 mb-8">
           {colours.map((color) => (
-            <button
+            <div
               key={color.id}
               onClick={() => setchangeTheme(color.id)}
               className={`w-[25px] h-[25px] rounded-full cursor-pointer transition-transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 ${color.id}`}
@@ -36,7 +36,7 @@ const Themes = ({ bgImages, setbgImages, bgimage, changeTheme, setchangeTheme, c
         <div className="flex gap-2 flex-wrap">
           {bgimage.map((pattern) => (
             // BEST PRACTICE: Use a <button> for clickable actions for accessibility.
-            <button
+            <div
               key={pattern.id}
               onClick={() => setbgImages(pattern.id)}
               // ACCESSIBILITY: Describes the button's purpose.

@@ -1,6 +1,7 @@
 
-import { Camera, Pencil } from "lucide-react";
 import React, { useState } from "react";
+import { FaCamera } from "react-icons/fa6";
+import { HiPencil } from "react-icons/hi";
 
 const Background = () => {
   const [background, setBackground] = useState();
@@ -43,7 +44,7 @@ const Background = () => {
         <div className="absolute top-2 left-0 w-full px-4 flex items-center justify-between text-white">
           <h1 className="text-white font-semibold text-lg">Settings</h1>
           <label className="cursor-pointer bg-white p-2 rounded-full shadow">
-            <Pencil size={18} className="text-gray-700" />
+            <HiPencil size={18} className="text-gray-700" />
             <input
               type="file"
               accept="image/*"
@@ -63,7 +64,7 @@ const Background = () => {
             className="w-20 h-20 rounded-[50%] border-4 border-white object-cover"
           />
           <label className="absolute bottom-1 right-1 bg-white p-1 rounded-full shadow cursor-pointer">
-            <Camera size={14} className="text-gray-700" />
+            <FaCamera size={14} className="text-gray-700" />
             <input
               type="file"
               accept="image/*"

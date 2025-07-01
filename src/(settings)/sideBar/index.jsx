@@ -4,11 +4,10 @@ import Themes from "../component/themes";
 import Privacy from "../component/privacy";
 import Security from "../component/security";
 import PersonalInformation from "../component/personal Information";
-import { FaCircleHalfStroke, FaUser } from "react-icons/fa6";
+import { FaChevronDown, FaChevronUp, FaCircleHalfStroke, FaUser } from "react-icons/fa6";
 import { IoIosLock } from "react-icons/io";
 import { IoShieldCheckmarkSharp } from "react-icons/io5";
 import { MdOutlineHelp } from "react-icons/md";
-import { ChevronDown, ChevronUp } from "lucide-react";
 
 const SideBar = ({ setbgImages, bgimage,  bgImages,  changeTheme, setchangeTheme, colours  }) => {
   const [toggleIndex, setToggleIndex] = useState(null);
@@ -38,7 +37,7 @@ const SideBar = ({ setbgImages, bgimage,  bgImages,  changeTheme, setchangeTheme
               {item.title}
             </div>
             <div className="text-[#777C81]">
-              {toggleIndex === index ? <ChevronUp /> : <ChevronDown />}
+              {toggleIndex === index ? <FaChevronUp/> :  <FaChevronDown/>}
             </div>
           </div>
 
