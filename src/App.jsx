@@ -5,11 +5,11 @@ import Register from './pages/auth/Register';
 import VerifyEmail from './pages/auth/VerifyEmail';
 import Dashboard from './pages/Dashboard';
 import { Toaster } from 'react-hot-toast';
-// import MainLayout from './mainLayout';
-// import MainLayout from './mainLayout';
 import { useBgImages } from './(settings)/hooks/useBgImages';
 import { useChangetheme } from './(settings)/hooks/useChangetheme ';
 import MainLayout from './TheMainLayout';
+import ActivityStatusButton from './activity status/ActivityStatusButton';
+
 
 function App() {
   const { bgImages, setbgImages, bgimage } = useBgImages();
@@ -32,7 +32,8 @@ function App() {
             }
           >
             <Route path="dashboard" element={<Dashboard />} />
-            <Route />
+            {/* temporary route */}
+            <Route path= "status" element={<ActivityStatusButton/>}/>
           </Route>
           <Route element={<AuthLayout />}>
             <Route index element={<Navigate replace to="auth-login" />} />
