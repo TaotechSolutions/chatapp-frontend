@@ -7,14 +7,37 @@ import Dashboard from "./pages/Dashboard";
 import { Toaster } from "react-hot-toast";
 import { useSelector } from "react-redux";
 import useSessionCheck from "./hooks/useSessionCheck";
+import { useBgImages } from './(settings)/hooks/useBgImages';
+import { useChangetheme } from './(settings)/hooks/useChangetheme ';
+import MainLayout from './TheMainLayout';
+import ActivityStatusButton from './activity status/ActivityStatusButton';
 
 function App() {
   useSessionCheck();
   const { isAuthenticated } = useSelector((state) => state.auth);
+  const { bgImages, setbgImages, bgimage } = useBgImages();
+  const { changeTheme, setchangeTheme, colours } = useChangetheme();
+
   return (
     <>
       <BrowserRouter>
         <Routes>
+          <Route
+            element={
+              <MainLayout
+                bgimage={bgimage}
+                setbgImages={setbgImages}
+                bgImages={bgImages}
+                setchangeTheme={setchangeTheme}
+                colours={colours}
+                changeTheme={changeTheme}
+              />
+            }
+          >
+            <Route path="dashboard" element={<Dashboard />} />
+            {/* temporary route */}
+            <Route path= "status" element={<ActivityStatusButton/>}/>
+          </Route>
           <Route element={<AuthLayout />}>
             <Route index element={<Navigate replace to="auth-login" />} />
 
@@ -33,7 +56,6 @@ function App() {
             />
           </Route>
           <Route path="verify-email" element={<VerifyEmail />} />
-          <Route path="dashboard" element={<Dashboard />} />
         </Routes>
       </BrowserRouter>
       {/* Toaster for notification */}
