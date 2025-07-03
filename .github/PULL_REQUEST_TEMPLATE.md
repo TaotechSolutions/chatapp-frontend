@@ -1,7 +1,9 @@
-## Chat Bubble Component Added
-<!-- Give a clear and concise title for your PR -->
 
----
+## Chat Bubble Component Added
+
+## 📝 Pull Request Title
+
+<!-- Give a clear and concise title for your PR -->
 
 ## 📌 Description
 
