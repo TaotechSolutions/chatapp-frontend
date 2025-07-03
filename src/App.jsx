@@ -13,10 +13,10 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route element={<MainLayout />}>
-            <Route path="dashboard" element={<Dashboard />} />
-            {/* temporary route */}
-            <Route path="status" element={<ActivityStatusButton />} />
+          <Route path="dashboard" element={<MainLayout />} >
+          {/* <Route element={<Dashboard />} /> */}
+          {/* temporary route */}
+          <Route path="status" element={<ActivityStatusButton />} />
           </Route>
           <Route element={<AuthLayout />}>
             <Route index element={<Navigate replace to="auth-login" />} />
