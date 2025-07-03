@@ -1,11 +1,18 @@
 // hooks/useChangetheme.js (fixed typo from your import)
-import React from "react";
+import React from 'react';
 
-const Themes = ({ bgImages, setbgImages, bgimage, changeTheme, setchangeTheme, colours }) => {
-  console.log(bgimage, setbgImages, bgImages, changeTheme ,"kill")
+const Themes = ({
+  bgImages,
+  setbgImages,
+  bgimage,
+  changeTheme,
+  setchangeTheme,
+  colours,
+}) => {
+  console.log(bgimage, setbgImages, bgImages, changeTheme, 'kill');
   // CLARITY: Renamed variables to standard camelCase
   // const { colours, setchangeTheme } = useChangetheme();
-  console.log(colours, "k")
+  console.log(colours, 'k');
 
   return (
     <div>
@@ -15,7 +22,7 @@ const Themes = ({ bgImages, setbgImages, bgimage, changeTheme, setchangeTheme, c
           Choose Theme Color:
         </p>
         <div className="flex gap-2 mb-8">
-          {colours.map((color) => (
+          {colours.map(color => (
             <button
               key={color.id}
               onClick={() => setchangeTheme(color.id)}
@@ -34,7 +41,7 @@ const Themes = ({ bgImages, setbgImages, bgimage, changeTheme, setchangeTheme, c
           Choose Theme Image:
         </p>
         <div className="flex gap-2 flex-wrap">
-          {bgimage.map((pattern) => (
+          {bgimage.map(pattern => (
             // BEST PRACTICE: Use a <button> for clickable actions for accessibility.
             <button
               key={pattern.id}
@@ -44,8 +51,8 @@ const Themes = ({ bgImages, setbgImages, bgimage, changeTheme, setchangeTheme, c
               className="w-[25px] h-[25px] rounded-full cursor-pointer border transition-transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
               style={{
                 backgroundImage: `url(${pattern.id})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
               }}
             />
           ))}

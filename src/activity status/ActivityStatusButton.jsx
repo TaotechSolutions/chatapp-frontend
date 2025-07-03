@@ -36,17 +36,19 @@ const ActivityStatusButton = () => {
     { label: 'Today', ms: 24 * 60 * 60 * 1000 },
   ];
 
-  const handleSelect = (durations) => {
+  const handleSelect = durations => {
     const end = durations.ms ? Date.now() + durations.ms : null;
     setendTime(end);
     setselectedLabel(durations.label);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
-    console.log("✅ Submitted:", inpVal, endTime);
+    console.log('✅ Submitted:', inpVal, endTime);
     newStatus(inpVal, endTime);
-    alert(`${inpVal} set until ${endTime ? new Date(endTime).toLocaleString() : 'No expiry'}`);
+    alert(
+      `${inpVal} set until ${endTime ? new Date(endTime).toLocaleString() : 'No expiry'}`,
+    );
   };
 
   return (
@@ -55,10 +57,12 @@ const ActivityStatusButton = () => {
         <DialogTrigger asChild>
           <Button variant="outline">Open Dialog</Button>
         </DialogTrigger>
-   <DialogContent className="sm:max-w-[425px]">
-        <form onSubmit={handleSubmit}>
+        <DialogContent className="sm:max-w-[425px]">
+          <form onSubmit={handleSubmit}>
             <DialogHeader className="mb-3">
-              <DialogTitle className="font-bold text-[22px]">Set Status</DialogTitle>
+              <DialogTitle className="font-bold text-[22px]">
+                Set Status
+              </DialogTitle>
             </DialogHeader>
 
             <div className="grid gap-4">
@@ -68,7 +72,7 @@ const ActivityStatusButton = () => {
                   name="Status"
                   placeholder="Enter your status"
                   value={inpVal}
-                  onChange={(e) => setinpVal(e.target.value)}
+                  onChange={e => setinpVal(e.target.value)}
                 />
               </div>
 
@@ -101,14 +105,16 @@ const ActivityStatusButton = () => {
 
             <DialogFooter>
               <DialogClose asChild>
-                <Button type="button" variant="outline">Cancel</Button>
+                <Button type="button" variant="outline">
+                  Cancel
+                </Button>
               </DialogClose>
-            <DialogClose asChild>
-                  <Button type="submit">Save changes</Button>
-            </DialogClose>
+              <DialogClose asChild>
+                <Button type="submit">Save changes</Button>
+              </DialogClose>
             </DialogFooter>
-        </form>
-          </DialogContent>
+          </form>
+        </DialogContent>
       </Dialog>
     </div>
   );

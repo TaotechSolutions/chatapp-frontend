@@ -4,19 +4,19 @@ import {
   useContext,
   useEffect,
   useState,
-} from "react";
+} from 'react';
 
 const ThemeContext = createContext();
 
 export default function ThemeProvider({ children }) {
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState('light');
 
   function toggleTheme() {
-    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
+    setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'));
   }
 
   useEffect(() => {
-    document.documentElement.classList.remove("light", "dark");
+    document.documentElement.classList.remove('light', 'dark');
     document.documentElement.classList.add(theme);
   }, [theme]);
 
@@ -25,7 +25,7 @@ export default function ThemeProvider({ children }) {
       value={{
         theme,
         setTheme,
-        toggleTheme
+        toggleTheme,
       }}
     >
       {children}

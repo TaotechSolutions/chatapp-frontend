@@ -11,23 +11,23 @@ import {
 import { Button } from '../components/ui/button';
 import { useChangeStatusStore } from '../store/useChangeStatusStore';
 
-export default function SetStatus({handleSelect, duration, selectedLabel}) {
-//   const { status, setExpiresAt, newStatus } = useChangeStatusStore();
-//   const [selectedLabel, setselectedLabel] = useState('Set Status Time');
-//   const duration = [
-//      { label: "Don't Clear", ms: null },
-//     { label: '30 minutes', ms: 30 * 60 * 1000 },
-//     { label: '1 hour', ms: 60 * 60 * 1000 },
-//     { label: '4 hours', ms: 72 * 60 * 60 * 1000 },
-//     { label: 'Today', ms: 24 * 60 * 60 * 1000 },
-//   ];
+export default function SetStatus({ handleSelect, duration, selectedLabel }) {
+  //   const { status, setExpiresAt, newStatus } = useChangeStatusStore();
+  //   const [selectedLabel, setselectedLabel] = useState('Set Status Time');
+  //   const duration = [
+  //      { label: "Don't Clear", ms: null },
+  //     { label: '30 minutes', ms: 30 * 60 * 1000 },
+  //     { label: '1 hour', ms: 60 * 60 * 1000 },
+  //     { label: '4 hours', ms: 72 * 60 * 60 * 1000 },
+  //     { label: 'Today', ms: 24 * 60 * 60 * 1000 },
+  //   ];
 
-//   const handleSelect = duration => {
-//     console.log(duration);
-//     let endTime = Date.now() + duration.ms;
-//     setstatusTime(endTime);
-//     setselectedLabel(duration.label);
-//   };
+  //   const handleSelect = duration => {
+  //     console.log(duration);
+  //     let endTime = Date.now() + duration.ms;
+  //     setstatusTime(endTime);
+  //     setselectedLabel(duration.label);
+  //   };
   return (
     <div className="w-full max-w-sm mx-auto">
       <DropdownMenu>
@@ -53,8 +53,6 @@ export default function SetStatus({handleSelect, duration, selectedLabel}) {
               {item.label}
             </DropdownMenuItem>
           ))}
-
-          
         </DropdownMenuContent>
       </DropdownMenu>
     </div>

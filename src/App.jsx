@@ -5,35 +5,18 @@ import Register from './pages/auth/Register';
 import VerifyEmail from './pages/auth/VerifyEmail';
 import Dashboard from './pages/Dashboard';
 import { Toaster } from 'react-hot-toast';
-import { useBgImages } from './(settings)/hooks/useBgImages';
-import { useChangetheme } from './(settings)/hooks/useChangetheme ';
-import MainLayout from './TheMainLayout';
+import MainLayout from './Layouts/TheMainLayout';
 import ActivityStatusButton from './activity status/ActivityStatusButton';
 
-
 function App() {
-  const { bgImages, setbgImages, bgimage } = useBgImages();
-  const { changeTheme, setchangeTheme, colours } = useChangetheme();
-
   return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route
-            element={
-              <MainLayout
-                bgimage={bgimage}
-                setbgImages={setbgImages}
-                bgImages={bgImages}
-                setchangeTheme={setchangeTheme}
-                colours={colours}
-                changeTheme={changeTheme}
-              />
-            }
-          >
+          <Route element={<MainLayout />}>
             <Route path="dashboard" element={<Dashboard />} />
             {/* temporary route */}
-            <Route path= "status" element={<ActivityStatusButton/>}/>
+            <Route path="status" element={<ActivityStatusButton />} />
           </Route>
           <Route element={<AuthLayout />}>
             <Route index element={<Navigate replace to="auth-login" />} />

@@ -1,9 +1,7 @@
-
-
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
-@import "tailwindcss";
 @import 'tailwindcss';
-@import "tw-animate-css";
+@import 'tailwindcss';
+@import 'tw-animate-css';
 
 @custom-variant dark (&:is(.dark *));
 @layer components {
@@ -225,4 +223,3 @@ label {
     @apply bg-background text-foreground;
   }
 }
-

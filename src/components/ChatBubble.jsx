@@ -6,8 +6,8 @@ const stats = {
   sent: '📩',
 };
 
-function ChatBubble({message}) {
-  const isSender = message.sender
+function ChatBubble({ message }) {
+  const isSender = message.sender;
   const contClass = `flex mb-3 ${isSender ? 'justify-end' : 'justify-start'}`;
   const bubbleClass = `p-4 rounded  ${isSender ? 'bg-green-600 text-white' : 'bg-gray-100 text-black'}`;
 

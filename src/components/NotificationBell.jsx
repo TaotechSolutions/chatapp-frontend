@@ -1,4 +1,4 @@
-import { FaRegTimesCircle } from "react-icons/fa";
+import { FaRegTimesCircle } from 'react-icons/fa';
 
 export default function NotificationBell() {
   return (
@@ -22,11 +22,9 @@ export default function NotificationBell() {
         You have successfully logged out of your account.
       </p>
 
-
       {/* <div className="bg-green-100 text-green-800 px-4 py-3 rounded-lg shadow-md border border-green-300">
   You have successfully logged in to your account.
 </div> */}
-
     </div>
   );
 }
