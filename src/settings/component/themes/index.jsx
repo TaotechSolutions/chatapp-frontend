@@ -1,18 +1,10 @@
-// hooks/useChangetheme.js (fixed typo from your import)
+import { useBgImages } from '../../hooks/useBgImages';
+import { useChangetheme } from '../../hooks/useChangetheme ';
 import React from 'react';
 
-const Themes = ({
-  bgImages,
-  setbgImages,
-  bgimage,
-  changeTheme,
-  setchangeTheme,
-  colours,
-}) => {
-  console.log(bgimage, setbgImages, bgImages, changeTheme, 'kill');
-  // CLARITY: Renamed variables to standard camelCase
-  // const { colours, setchangeTheme } = useChangetheme();
-  console.log(colours, 'k');
+const Themes = () => {
+  const { setbgImages, bgimage } = useBgImages();
+  const { setchangeTheme, colours } = useChangetheme();
 
   return (
     <div>
@@ -27,8 +19,6 @@ const Themes = ({
               key={color.id}
               onClick={() => setchangeTheme(color.id)}
               className={`w-[25px] h-[25px] rounded-full cursor-pointer transition-transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 ${color.id}`}
-              // ACCESSIBILITY: Describes the button's purpose to screen readers.
-              // Assumes color.name exists, like 'Green', 'Blue', etc.
               aria-label={`Set theme to ${color.name || color.id}`}
             />
           ))}

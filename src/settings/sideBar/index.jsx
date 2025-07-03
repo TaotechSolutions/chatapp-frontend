@@ -9,60 +9,45 @@ import { IoIosLock } from 'react-icons/io';
 import { IoShieldCheckmarkSharp } from 'react-icons/io5';
 import { MdOutlineHelp } from 'react-icons/md';
 import { ChevronDown, ChevronUp } from 'lucide-react';
-import { useBgImages } from '../hooks/useBgImages';
-import { useChangetheme } from '../hooks/useChangetheme ';
+
+const settingsItem = [
+  { title: 'Personal Info', content: PersonalInformation, icon: <FaUser /> },
+  { title: 'Themes', content: Themes, icon: <FaCircleHalfStroke /> },
+  { title: 'Privacy', content: Privacy, icon: <IoIosLock /> },
+  { title: 'Security', content: Security, icon: <IoShieldCheckmarkSharp /> },
+  { title: 'Help', content: Help, icon: <MdOutlineHelp /> },
+];
 
 const SideBar = () => {
-  const [toggleIndex, setToggleIndex] = useState(null);
-  const { setbgImages, bgimage, bgImages } = useBgImages();
-  const { changeTheme, setchangeTheme, colours } = useChangetheme();
+  const [toggleId, setToggleId] = useState(null);
 
-  const settingsItem = [
-    { title: 'Personal Info', content: PersonalInformation, icon: <FaUser /> },
-    { title: 'Themes', content: Themes, icon: <FaCircleHalfStroke /> },
-    { title: 'Privacy', content: Privacy, icon: <IoIosLock /> },
-    { title: 'Security', content: Security, icon: <IoShieldCheckmarkSharp /> },
-    { title: 'Help', content: Help, icon: <MdOutlineHelp /> },
-  ];
-
-  const toggleBar = index => {
-    setToggleIndex(toggleIndex === index ? null : index);
+  const toggleBar = id => {
+    setToggleId(toggleId === id ? null : id);
   };
 
   return (
     <div className="overflow-auto">
-      {settingsItem.map((item, index) => (
-        <div key={index}>
+      {settingsItem.map((item, id) => (
+        <div key={id}>
           <div
             className="flex justify-between py-[7px] px-[10px] border-t mb-[2px] border-[#777C81] pt-2 pb-2 cursor-pointer"
-            onClick={() => toggleBar(index)}
+            onClick={() => toggleBar(id)}
           >
             <div className="flex gap-[.4em] items-center text-[#777C81] text-[14px] font-[500]">
               {item.icon}
               {item.title}
             </div>
             <div className="text-[#777C81]">
-              {toggleIndex === index ? <ChevronUp /> : <ChevronDown />}
+              {toggleId === id ? <ChevronUp /> : <ChevronDown />}
             </div>
           </div>
 
           <div
             className={`transition-all duration-500 ease-in-out overflow-hidden ${
-              toggleIndex === index
-                ? 'max-h-96 opacity-100'
-                : 'max-h-0 opacity-0'
+              toggleId === id ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
             }`}
           >
-            <div className="py-2 px-4">
-              {React.createElement(item.content, {
-                setbgImages,
-                bgimage,
-                bgImages,
-                changeTheme,
-                setchangeTheme,
-                colours,
-              })}
-            </div>
+            <div className="py-2 px-4">{React.createElement(item.content)}</div>
           </div>
         </div>
       ))}
