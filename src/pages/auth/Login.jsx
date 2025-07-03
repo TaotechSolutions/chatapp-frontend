@@ -35,13 +35,13 @@ export default function Login() {
   }, [isAuthenticated, navigate]);
 
   function onLogin(data) {
-    if (!data.username || !data.password) {
+    if (!data.email || !data.password) {
       return toast.error("Please fill in all fields");
     }
 
     dispatch(
       loginUser({
-        email: data.username,
+        email: data.email,
         password: data.password,
         rememberMe
       })
