@@ -1,12 +1,12 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 import {
   loginUser,
   registerUser,
   logoutUser,
   setUserFromCookie,
-} from "./authActions";
+} from './authActions';
 
-const userFromStorage = JSON.parse(localStorage.getItem("user"));
+const userFromStorage = JSON.parse(localStorage.getItem('user') || {});
 
 const initialState = {
   user: userFromStorage,
@@ -16,24 +16,24 @@ const initialState = {
 };
 
 const authSlice = createSlice({
-  name: "auth",
+  name: 'auth',
   initialState,
   reducers: {
     setUser: (state, action) => {
       state.user = action.payload;
       state.isAuthenticated = true;
-      localStorage.setItem("user", JSON.stringify(action.payload));
+      localStorage.setItem('user', JSON.stringify(action.payload));
     },
-    clearUser: (state) => {
+    clearUser: state => {
       state.user = null;
       state.isAuthenticated = false;
-      localStorage.removeItem("user");
+      localStorage.removeItem('user');
     },
   },
-  extraReducers: (builder) => {
+  extraReducers: builder => {
     builder
       // LOGIN
-      .addCase(loginUser.pending, (state) => {
+      .addCase(loginUser.pending, state => {
         state.loading = true;
         state.error = null;
       })
@@ -48,7 +48,7 @@ const authSlice = createSlice({
       })
 
       // REGISTER
-      .addCase(registerUser.pending, (state) => {
+      .addCase(registerUser.pending, state => {
         state.loading = true;
         state.error = null;
       })
@@ -63,7 +63,7 @@ const authSlice = createSlice({
       })
 
       // LOGOUT
-      .addCase(logoutUser.fulfilled, (state) => {
+      .addCase(logoutUser.fulfilled, state => {
         state.user = null;
         state.isAuthenticated = false;
         state.loading = false;
@@ -75,7 +75,7 @@ const authSlice = createSlice({
       })
 
       // SET USER FROM COOKIE
-      .addCase(setUserFromCookie.pending, (state) => {
+      .addCase(setUserFromCookie.pending, state => {
         state.loading = true;
         state.error = null;
       })
