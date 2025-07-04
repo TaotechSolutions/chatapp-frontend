@@ -1,22 +1,42 @@
+import { useEffect, useState } from 'react';
 import AuthForm from '../../components/AuthForm';
 import FormInput from '../../components/FormInput';
 import Button from '../../components/Button';
-import { useNavigate, useOutletContext } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import useAuth from '../../hooks/useAuth';
+import { loginUser } from '../../features/auth/authActions';
 import toast from 'react-hot-toast';
-import { ADMIN_CREDENTIALS } from '../../utils/admins';
 
 export default function Login() {
-  const { handleSubmit } = useOutletContext();
+  const { isAuthenticated, error, loading } = useAuth();
+  const [rememberMe, setRememberMe] = useState(false);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  function onLogin(data) {
-    let currentUser = JSON.parse(localStorage.getItem('user')) || [];
-    let admin = ADMIN_CREDENTIALS.some(
-      info => data.email === info.email && data.password === info.password,
-    );
+  // Sync with localStorage on first load
+  useEffect(() => {
+    const storedRememberMe = localStorage.getItem('rememberMe');
+    setRememberMe(storedRememberMe === 'true');
+  }, []);
 
+  // Update localStorage whenever rememberMe changes
+  const handleRememberMeChange = e => {
+    const isChecked = e.target.checked;
+    setRememberMe(isChecked);
+    localStorage.setItem('rememberMe', isChecked.toString());
+  };
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      toast.success('Login successful!');
+      navigate('/dashboard');
+    }
+  }, [isAuthenticated, navigate]);
+
+  function onLogin(data) {
     if (!data.email || !data.password) {
-      return;
+      return toast.error('Please fill in all fields');
     }
 
     if (admin) {
@@ -30,79 +50,66 @@ export default function Login() {
           padding: '15px',
         },
       });
+
       console.log('Logged in as admin');
       navigate('/dashboard');
-      return;
+      return null;
     }
 
-    if (
-      data.email === currentUser.email &&
-      data.password === currentUser.password
-    ) {
-      // Check email verification status
-      if (!currentUser.emailVerified) {
-        toast.error('Please verify your email first');
-        navigate('/verify-email');
-        console.log('Verify mail');
-        return;
-      }
-
-      toast.success('Login successful!');
-      console.log('logged in as user');
-      navigate('/dashboard');
-      return;
-    }
-
-    toast('Invalid username or password', {
-      icon: '😏',
-      duration: 4000,
-      style: {
-        backgroundColor: 'red',
-        color: 'white',
-        padding: '10px',
-      },
-    });
+    dispatch(
+      loginUser({
+        email: data.email,
+        password: data.password,
+        rememberMe,
+      }),
+    )
+      .unwrap()
+      .then(() => {
+        toast.success('Login successful!');
+        navigate('/dashboard');
+      })
+      .catch(err => {
+        toast.error(err || 'Login failed');
+      });
   }
 
   return (
-    <div>
-      <AuthForm onSubmit={handleSubmit(onLogin)}>
+    <AuthForm onSubmit={onLogin}>
+      <FormInput
+        label="Email"
+        name="email"
+        type="email"
+        placeholder="Enter Email"
+      />
+      <div className="relative">
+        <a
+          href="#"
+          className="absolute right-0 top-0.5 text-green-500 text-sm hover:underline"
+        >
+          Forgot password?
+        </a>
         <FormInput
-          label="Email"
-          name="email"
-          type="email"
-          placeholder="Enter Email"
+          label="Password"
+          type="password"
+          name="password"
+          placeholder="Enter password"
         />
-        <div className="relative">
-          <a
-            href="#"
-            className="absolute right-0 top-0.5 text-green-500 text-sm hover:underline"
-          >
-            Forgot password?
-          </a>
-          <FormInput
-            label="Password"
-            type="password"
-            name="password"
-            placeholder="Enter password"
-          />
-        </div>
-        <div className="flex items-center justify-start gap-2">
-          <input
-            type="checkbox"
-            id="remember"
-            name="remember"
-            className="accent-green-800 text-white"
-          />
-          <label
-            htmlFor="remember"
-            className="text-gray-600 text-sm font-light"
-          >
-            Remember me
-          </label>
-        </div>
-        <Button>Login</Button>
-      </AuthForm>
-    </div>
+      </div>
+      <div className="flex items-center justify-start gap-2">
+        <input
+          type="checkbox"
+          id="remember"
+          name="remember"
+          className="accent-green-800 text-white"
+          checked={rememberMe}
+          onChange={handleRememberMeChange}
+        />
+        <label htmlFor="remember" className="text-gray-600 text-sm font-light">
+          Remember me
+        </label>
+      </div>
+      {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
+      <Button disabled={loading}>{loading ? 'Logging in...' : 'Login'}</Button>
+    </AuthForm>
   );
 }
