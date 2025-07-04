@@ -7,6 +7,7 @@ import { Toaster } from 'react-hot-toast';
 import MainLayout from './Layouts/TheMainLayout';
 import useSessionCheck from './hooks/useSessionCheck';
 import ProtectedRoute from './contexts/ProtectedRoute';
+import Dashboard from './pages/Dashboard';
 // import ActivityStatusButton from './activity status/ActivityStatusButton';
 {
   /* <Route path="status" element={<ActivityStatusButton />} /> */
@@ -34,7 +35,9 @@ function App() {
                 <MainLayout />
               </ProtectedRoute>
             }
-          />
+          >
+            <Route index element={<Dashboard />} />
+          </Route>
         </Routes>
       </BrowserRouter>
       {/* Toaster for notification */}

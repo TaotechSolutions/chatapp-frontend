@@ -6,7 +6,8 @@ import {
   setUserFromCookie,
 } from './authActions';
 
-const userFromStorage = JSON.parse(localStorage.getItem('user') || {});
+const storedUser = localStorage.getItem('user');
+const userFromStorage = storedUser ? JSON.parse(storedUser) : null;
 
 const initialState = {
   user: userFromStorage,
