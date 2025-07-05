@@ -1,32 +1,21 @@
-
-import { Camera, Pencil } from "lucide-react";
-import React, { useState } from "react";
+import { Camera, Pencil } from 'lucide-react';
+import React, { useState } from 'react';
 
 const Background = () => {
-  const [background, setBackground] = useState();
-  const [profilePhoto, setProfilePhoto] = useState("https://doot-light.react.themesbrand.com/static/media/avatar-1.9c8e605558cece65b06c.jpg"); // default profile
+  const [background, setBackground] = useState(null);
+  const [profilePhoto, setProfilePhoto] = useState(
+    'https://doot-light.react.themesbrand.com/static/media/avatar-1.9c8e605558cece65b06c.jpg',
+  ); // default profile
 
-  const handleChangeBackground = (e) => {
+  function handleFileChange(e, setterMethod) {
     const file = e.target.files[0];
     if (!file) return;
 
     const reader = new FileReader();
-    reader.onloadend = () => {
-      setBackground(reader.result);
-    };
-    reader.readAsDataURL(file);
-  };
+    reader.onloadend = () => setterMethod(reader.result);
 
-  const handleChangeProfilePhoto = (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
-
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      setProfilePhoto(reader.result);
-    };
     reader.readAsDataURL(file);
-  };
+  }
 
   return (
     <div className="w-full">
@@ -34,9 +23,9 @@ const Background = () => {
       <div
         className="relative w-full h-44 overflow-hidden"
         style={{
-          backgroundImage: `url(${background || "https://doot-light.react.themesbrand.com/static/media/img-4.8111c4656c8bc3b62569.jpg"})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
+          backgroundImage: `url(${background || 'https://doot-light.react.themesbrand.com/static/media/img-4.8111c4656c8bc3b62569.jpg'})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
         }}
       >
         {/* Top label */}
@@ -47,7 +36,7 @@ const Background = () => {
             <input
               type="file"
               accept="image/*"
-              onChange={handleChangeBackground}
+              onChange={e => handleFileChange(e, setBackground)}
               className="hidden"
             />
           </label>
@@ -59,7 +48,7 @@ const Background = () => {
         <div className="relative">
           <img
             src={profilePhoto}
-            alt="Profile"
+            alt="Profile picture"
             className="w-20 h-20 rounded-[50%] border-4 border-white object-cover"
           />
           <label className="absolute bottom-1 right-1 bg-white p-1 rounded-full shadow cursor-pointer">
@@ -67,13 +56,13 @@ const Background = () => {
             <input
               type="file"
               accept="image/*"
-              onChange={handleChangeProfilePhoto}
+              onChange={e => handleFileChange(e, setProfilePhoto)}
               className="hidden"
             />
           </label>
         </div>
       </div>
-
+      {/* Profile Name */}
       <div className="mb-5 text-center text-[#495057] text-[15px] font-[500] ">
         <p>Kathryn Swarey</p>
       </div>

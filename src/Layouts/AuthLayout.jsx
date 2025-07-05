@@ -1,11 +1,10 @@
-import React, { useState } from "react";
-import { useForm } from "react-hook-form";
-import { BiSolidMessageAltDetail } from "react-icons/bi";
-import { FaGithub } from "react-icons/fa6";
-import { GrGoogle } from "react-icons/gr";
-import { Link, Outlet, useLocation } from "react-router-dom";
-import { loginWithGitHub, loginWithGoogle } from "../utils/oauth";
-
+import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { BiSolidMessageAltDetail } from 'react-icons/bi';
+import { FaGithub } from 'react-icons/fa6';
+import { GrGoogle } from 'react-icons/gr';
+import { Link, Outlet, useLocation } from 'react-router-dom';
+import { loginWithGitHub, loginWithGoogle } from '../utils/oauth';
 
 function AuthLayout() {
   const location = useLocation();
@@ -72,7 +71,7 @@ function AuthLayout() {
               type="button"
               className="flex items-center justify-center p-3 bg-gray-400 hover:bg-gray-450 rounded-lg transition-colors duration-300 group cursor-pointer"
             >
-              <FaGithub  className="text-xl text-black group-hover:scale-110 transition-transform duration-300" />
+              <FaGithub className="text-xl text-black group-hover:scale-110 transition-transform duration-300" />
             </button>
             <button
               onClick={loginWithGoogle}

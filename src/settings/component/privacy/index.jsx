@@ -1,27 +1,27 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 const Privacy = () => {
-  const [profileStatus, setprofileStatus] = useState("Selected");
+  const [profileStatus, setprofileStatus] = useState('Selected');
   const [isOpen, setisOpen] = useState(true);
-  const [isOnline, setisOnline] = useState(true)
-  const [showStatus, setshowStatus] = useState("Everyone")
-  const [allowGroup, setallowGroup] = useState("Everyone")
-  const handleChange = (e) => {
+  const [isOnline, setisOnline] = useState(true);
+  const [showStatus, setshowStatus] = useState('Everyone');
+  const [allowGroup, setallowGroup] = useState('Everyone');
+  const handleChange = e => {
     setprofileStatus(e.target.value);
   };
   const ChangeStatus = () => {
     setisOpen(!isOpen);
   };
-  const handleStatus = (e)=>{
-    setshowStatus(e.target.value)
-  }
-  const changeOnlineStatus = ()=>{
-setisOnline(!isOnline)
-  }
+  const handleStatus = e => {
+    setshowStatus(e.target.value);
+  };
+  const changeOnlineStatus = () => {
+    setisOnline(!isOnline);
+  };
 
-  const chnageGroupPermission=(e)=>{
-    setallowGroup(e.target.value)
-  }
+  const chnageGroupPermission = e => {
+    setallowGroup(e.target.value);
+  };
   return (
     <div>
       <div className="flex items-center justify-between border-b border-gray-300 pt-4 pb-4">
@@ -43,17 +43,16 @@ setisOnline(!isOnline)
           <button
             onClick={ChangeStatus}
             className={`w-[40px] cursor-pointer h-[16px] flex items-center rounded-full p-1 transition duration-300 ${
-              isOpen ? "bg-green-500" : "bg-white border-2 border-gray-300"
+              isOpen ? 'bg-green-500' : 'bg-white border-2 border-gray-300'
             } `}
           >
             <div
               className={`w-[11px] h-[11px]  rounded-full shadow-md transform transition duration-300 ${
                 isOpen
-                  ? "translate-x-5 bg-white"
-                  : "translate-x-0 bg-[#bfbfbf] "
+                  ? 'translate-x-5 bg-white'
+                  : 'translate-x-0 bg-[#bfbfbf] '
               } `}
             />
-
           </button>
         </div>
       </div>
@@ -71,24 +70,22 @@ setisOnline(!isOnline)
         </select>
       </div>
 
-
       <div className="flex items-center justify-between border-b border-gray-300 pt-4 pb-4">
         <p className="text-[#495057] text-[13px] font-[500]">Read reciept</p>
         <div>
           <button
             onClick={changeOnlineStatus}
             className={`w-[40px] cursor-pointer h-[16px] flex items-center rounded-full p-1 transition duration-300 ${
-              isOnline ? "bg-green-500" : "bg-white border-2 border-gray-300"
+              isOnline ? 'bg-green-500' : 'bg-white border-2 border-gray-300'
             } `}
           >
             <div
               className={`w-[11px] h-[11px]  rounded-full shadow-md transform transition duration-300 ${
                 isOnline
-                  ? "translate-x-5 bg-white"
-                  : "translate-x-0 bg-[#bfbfbf] "
+                  ? 'translate-x-5 bg-white'
+                  : 'translate-x-0 bg-[#bfbfbf] '
               } `}
             />
-
           </button>
         </div>
       </div>

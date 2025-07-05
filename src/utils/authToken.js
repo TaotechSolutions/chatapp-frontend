@@ -1,7 +1,7 @@
 let fallbackToken = null;
 let authMode = localStorage.getItem('auth_mode') || 'cookie';
 
-export const setInMemoryToken = (token) => {
+export const setInMemoryToken = token => {
   fallbackToken = token;
   sessionStorage.setItem('fallback_token', token);
 };
@@ -12,13 +12,12 @@ export const getInMemoryToken = () => {
 
 export const clearInMemoryToken = () => {
   fallbackToken = null;
-  localStorage.removeItem("auth_mode");
+  localStorage.removeItem('auth_mode');
   sessionStorage.removeItem('fallback_token');
 };
 
-
 export const getAuthMode = () => authMode;
-export const setAuthMode = (mode) => {
+export const setAuthMode = mode => {
   authMode = mode;
   localStorage.setItem('auth_mode', mode);
 };
