@@ -1,6 +1,5 @@
 export default function AuthForm({ children, onSubmit }) {
-
-   const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault(); // Prevent default form submission behavior
 
     const formData = new FormData(e.target);
